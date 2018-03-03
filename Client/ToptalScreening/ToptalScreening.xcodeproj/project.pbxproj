@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F30EEA96204B24820088D95D /* JogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EEA95204B24820088D95D /* JogTableViewCell.swift */; };
+		F30EEA98204B26BA0088D95D /* JogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EEA97204B26BA0088D95D /* JogTableViewController.swift */; };
+		F30EEA9A204B290F0088D95D /* Jog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EEA99204B290F0088D95D /* Jog.swift */; };
+		F30EEA9C204B62F10088D95D /* NewJogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EEA9B204B62F10088D95D /* NewJogViewController.swift */; };
 		F35BDC0F204A52EA008F1E52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35BDC0E204A52EA008F1E52 /* AppDelegate.swift */; };
 		F35BDC11204A52EA008F1E52 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35BDC10204A52EA008F1E52 /* ViewController.swift */; };
 		F35BDC14204A52EA008F1E52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F35BDC12204A52EA008F1E52 /* Main.storyboard */; };
@@ -35,6 +39,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F30EEA95204B24820088D95D /* JogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JogTableViewCell.swift; sourceTree = "<group>"; };
+		F30EEA97204B26BA0088D95D /* JogTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JogTableViewController.swift; sourceTree = "<group>"; };
+		F30EEA99204B290F0088D95D /* Jog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jog.swift; sourceTree = "<group>"; };
+		F30EEA9B204B62F10088D95D /* NewJogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewJogViewController.swift; sourceTree = "<group>"; };
 		F35BDC0B204A52EA008F1E52 /* ToptalScreening.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToptalScreening.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F35BDC0E204A52EA008F1E52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F35BDC10204A52EA008F1E52 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +110,10 @@
 				F35BDC0E204A52EA008F1E52 /* AppDelegate.swift */,
 				F35BDC10204A52EA008F1E52 /* ViewController.swift */,
 				F35BDC12204A52EA008F1E52 /* Main.storyboard */,
+				F30EEA9B204B62F10088D95D /* NewJogViewController.swift */,
+				F30EEA97204B26BA0088D95D /* JogTableViewController.swift */,
+				F30EEA99204B290F0088D95D /* Jog.swift */,
+				F30EEA95204B24820088D95D /* JogTableViewCell.swift */,
 				F35BDC15204A52EA008F1E52 /* Assets.xcassets */,
 				F35BDC17204A52EA008F1E52 /* LaunchScreen.storyboard */,
 				F35BDC1A204A52EA008F1E52 /* Info.plist */,
@@ -262,9 +274,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F30EEA96204B24820088D95D /* JogTableViewCell.swift in Sources */,
 				F35BDC3D204A5954008F1E52 /* RegisterViewController.swift in Sources */,
+				F30EEA98204B26BA0088D95D /* JogTableViewController.swift in Sources */,
 				F35BDC11204A52EA008F1E52 /* ViewController.swift in Sources */,
+				F30EEA9A204B290F0088D95D /* Jog.swift in Sources */,
 				F35BDC0F204A52EA008F1E52 /* AppDelegate.swift in Sources */,
+				F30EEA9C204B62F10088D95D /* NewJogViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
