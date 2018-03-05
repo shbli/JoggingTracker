@@ -28,7 +28,7 @@ class JogTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+         self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,32 +59,37 @@ class JogTableViewController: UITableViewController {
     }
     
     @IBAction func unwindToJogList(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.source as? NewJogViewController, let jog = sourceViewController.jog {
-            let newIndexPath = IndexPath(row: jogs.count, section: 0)
-            jogs.append(jog)
-            tableView.insertRows(at: [newIndexPath], with: .automatic)
+        if let sourceViewController = sender.source as? JogViewController, let jog = sourceViewController.jog {
+            
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                // Update an existing jog
+                jogs[selectedIndexPath.row] = jog
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+            } else {
+                //add a new jog
+                let newIndexPath = IndexPath(row: jogs.count, section: 0)
+                jogs.append(jog)
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }
         }
     }
-
-    /*
+    
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
-
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+            jogs.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
 
     /*
     // Override to support rearranging the table view.
@@ -101,14 +106,44 @@ class JogTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        switch (segue.identifier ?? "") {
+        case "AddItem":
+            break
+        case "LogOut":
+            break
+        case "ShowDetail":
+            
+            guard let jogDetailViewController = segue.destination as? JogViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            guard let selectedJogCell = sender as? JogTableViewCell else {
+                fatalError("Unexpected sender: \(String(describing: sender))")
+            }
+            
+            guard let indexPath = tableView.indexPath(for: selectedJogCell) else {
+                fatalError("The selected cell is not being displayed by the table")
+            }
+            
+            let selectedJog = jogs[indexPath.row]
+            jogDetailViewController.jog = selectedJog
+            
+            break
+        default:
+            fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
+            break
+        }
+        
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+ 
 
 }

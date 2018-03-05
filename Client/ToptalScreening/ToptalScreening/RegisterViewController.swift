@@ -19,9 +19,8 @@ class RegisterViewController : UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    @IBAction func OnDoneClicked(_ sender: UIButton) {
+        
+    @IBAction func onCancelClicked(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
-    
 }

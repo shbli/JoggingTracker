@@ -9,17 +9,24 @@
 import UIKit
 import os.log
 
-class NewJogViewController: UIViewController {
+class JogViewController: UIViewController {
     
     var jog: Jog?
     
     @IBOutlet weak var labelTextField: UITextField!    
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        if let jog = jog {
+            labelTextField.text = jog.label
+            //hide the cancel button while editing, so we can see the "Back" button
+            navigationItem.leftBarButtonItem = nil
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,7 +38,7 @@ class NewJogViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
+        super.prepare(for: segue, sender: sender)        
         guard let button = sender as? UIBarButtonItem, button == saveButton else {
             os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
             return

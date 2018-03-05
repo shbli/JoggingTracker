@@ -10,7 +10,7 @@
 		F30EEA96204B24820088D95D /* JogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EEA95204B24820088D95D /* JogTableViewCell.swift */; };
 		F30EEA98204B26BA0088D95D /* JogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EEA97204B26BA0088D95D /* JogTableViewController.swift */; };
 		F30EEA9A204B290F0088D95D /* Jog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EEA99204B290F0088D95D /* Jog.swift */; };
-		F30EEA9C204B62F10088D95D /* NewJogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EEA9B204B62F10088D95D /* NewJogViewController.swift */; };
+		F30EEA9C204B62F10088D95D /* JogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EEA9B204B62F10088D95D /* JogViewController.swift */; };
 		F35BDC0F204A52EA008F1E52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35BDC0E204A52EA008F1E52 /* AppDelegate.swift */; };
 		F35BDC11204A52EA008F1E52 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35BDC10204A52EA008F1E52 /* ViewController.swift */; };
 		F35BDC14204A52EA008F1E52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F35BDC12204A52EA008F1E52 /* Main.storyboard */; };
@@ -42,7 +42,7 @@
 		F30EEA95204B24820088D95D /* JogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JogTableViewCell.swift; sourceTree = "<group>"; };
 		F30EEA97204B26BA0088D95D /* JogTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JogTableViewController.swift; sourceTree = "<group>"; };
 		F30EEA99204B290F0088D95D /* Jog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jog.swift; sourceTree = "<group>"; };
-		F30EEA9B204B62F10088D95D /* NewJogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewJogViewController.swift; sourceTree = "<group>"; };
+		F30EEA9B204B62F10088D95D /* JogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JogViewController.swift; sourceTree = "<group>"; };
 		F35BDC0B204A52EA008F1E52 /* ToptalScreening.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToptalScreening.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F35BDC0E204A52EA008F1E52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F35BDC10204A52EA008F1E52 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 				F35BDC0E204A52EA008F1E52 /* AppDelegate.swift */,
 				F35BDC10204A52EA008F1E52 /* ViewController.swift */,
 				F35BDC12204A52EA008F1E52 /* Main.storyboard */,
-				F30EEA9B204B62F10088D95D /* NewJogViewController.swift */,
+				F30EEA9B204B62F10088D95D /* JogViewController.swift */,
 				F30EEA97204B26BA0088D95D /* JogTableViewController.swift */,
 				F30EEA99204B290F0088D95D /* Jog.swift */,
 				F30EEA95204B24820088D95D /* JogTableViewCell.swift */,
@@ -280,7 +280,7 @@
 				F35BDC11204A52EA008F1E52 /* ViewController.swift in Sources */,
 				F30EEA9A204B290F0088D95D /* Jog.swift in Sources */,
 				F35BDC0F204A52EA008F1E52 /* AppDelegate.swift in Sources */,
-				F30EEA9C204B62F10088D95D /* NewJogViewController.swift in Sources */,
+				F30EEA9C204B62F10088D95D /* JogViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,10 +447,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8DHF3523V5;
+				DEVELOPMENT_TEAM = 45ZQ7TG96W;
 				INFOPLIST_FILE = ToptalScreening/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Shbli.ToptalScreening;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Shbli.ToptalTechScreening;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -462,10 +462,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8DHF3523V5;
+				DEVELOPMENT_TEAM = 45ZQ7TG96W;
 				INFOPLIST_FILE = ToptalScreening/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Shbli.ToptalScreening;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Shbli.ToptalTechScreening;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
