@@ -9,7 +9,6 @@ router.register('users', views.UserViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('list_jogs/', views.jog_list),
     # Token API package
     # http://getblimp.github.io/django-rest-framework-jwt/
     path('token-auth/', obtain_jwt_token),

@@ -136,6 +136,7 @@ STATIC_URL = '/static/'
 
 # JWT settings
 JWT_AUTH = {
+    'JWT_RESPONSE_PAYLOAD_HANDLER': 'api.utils.jwt_response_payload_handler',
     'JWT_VERIFY_EXPIRATION': False,
     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=365),
     'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=365),

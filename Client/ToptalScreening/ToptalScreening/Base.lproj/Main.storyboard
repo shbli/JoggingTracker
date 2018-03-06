@@ -13,7 +13,7 @@
         <!--Login-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ToptalScreening" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="ToptalScreening" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -31,7 +31,6 @@
                                 <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="OnLoginClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kAJ-IO-dNc"/>
-                                    <segue destination="Mly-LS-uQC" kind="presentation" modalTransitionStyle="flipHorizontal" id="tM8-M2-7j1"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HrH-NE-6XV">
@@ -52,8 +51,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="New User"/>
                                 <connections>
-                                    <action selector="OnRegisterClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YlS-tn-Lkh"/>
-                                    <segue destination="6nT-uP-K86" kind="popoverPresentation" popoverAnchorView="Jan-3a-VH7" id="OSO-Bp-p1O">
+                                    <segue destination="6nT-uP-K86" kind="popoverPresentation" identifier="loginToNewUser" popoverAnchorView="Jan-3a-VH7" id="OSO-Bp-p1O">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                     </segue>
                                 </connections>
@@ -61,10 +59,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="_login" destination="YBe-k6-ZXQ" id="YcX-oV-W12"/>
-                        <outlet property="_password" destination="Ajk-2n-NYQ" id="fjN-V0-C5i"/>
-                        <outlet property="_register" destination="Jan-3a-VH7" id="5lU-T9-psA"/>
-                        <outlet property="_username" destination="HrH-NE-6XV" id="giV-bT-0X0"/>
+                        <outlet property="loginUIButton" destination="YBe-k6-ZXQ" id="YcX-oV-W12"/>
+                        <outlet property="passwordTextField" destination="Ajk-2n-NYQ" id="fjN-V0-C5i"/>
+                        <outlet property="registerUIButton" destination="Jan-3a-VH7" id="5lU-T9-psA"/>
+                        <outlet property="usernameTextField" destination="HrH-NE-6XV" id="giV-bT-0X0"/>
+                        <segue destination="Mly-LS-uQC" kind="presentation" identifier="login_successful" modalTransitionStyle="flipHorizontal" id="vVf-vW-iC0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -178,7 +177,7 @@
         <!--New user-->
         <scene sceneID="zur-af-BNk">
             <objects>
-                <viewController id="sFN-7j-Y8T" customClass="RegisterViewController" customModule="ToptalScreening" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="sFN-7j-Y8T" customClass="NewUserViewController" customModule="ToptalScreening" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qrd-Wn-Pe4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -190,6 +189,48 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JFl-UF-NLe">
+                                <rect key="frame" x="16" y="182" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" textContentType="username"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-Mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Ae-qu-Rjy">
+                                <rect key="frame" x="16" y="220" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" textContentType="email"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BTm-gh-e3G">
+                                <rect key="frame" x="16" y="258" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6uH-ke-8p6">
+                                <rect key="frame" x="16" y="296" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yyX-OY-gCK">
+                                <rect key="frame" x="16" y="144" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" textContentType="family-name"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N8K-QG-FEt">
+                                <rect key="frame" x="16" y="106" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" textContentType="given-name"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="xMf-Ne-Nml"/>
@@ -200,7 +241,20 @@
                                 <action selector="onCancelClicked:" destination="sFN-7j-Y8T" id="sWN-Nc-1lu"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Create" id="603-7M-bEJ">
+                            <connections>
+                                <action selector="onCreateClicked:" destination="sFN-7j-Y8T" id="rvr-4h-WpH"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="confirmPasswordTextField" destination="6uH-ke-8p6" id="ktp-88-yId"/>
+                        <outlet property="emailTextField" destination="0Ae-qu-Rjy" id="FMj-wW-ld2"/>
+                        <outlet property="firstNameTextField" destination="N8K-QG-FEt" id="Ech-op-Ime"/>
+                        <outlet property="lastNameTextField" destination="yyX-OY-gCK" id="j6G-GH-JVZ"/>
+                        <outlet property="passwordTextField" destination="BTm-gh-e3G" id="FVM-gu-FDB"/>
+                        <outlet property="usernameTextField" destination="JFl-UF-NLe" id="X9A-TA-4SL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6AG-q4-WPr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

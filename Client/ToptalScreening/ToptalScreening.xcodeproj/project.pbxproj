@@ -11,14 +11,18 @@
 		F30EEA98204B26BA0088D95D /* JogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EEA97204B26BA0088D95D /* JogTableViewController.swift */; };
 		F30EEA9A204B290F0088D95D /* Jog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EEA99204B290F0088D95D /* Jog.swift */; };
 		F30EEA9C204B62F10088D95D /* JogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EEA9B204B62F10088D95D /* JogViewController.swift */; };
+		F3395C4E204E1C6800147BC6 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3395C4D204E1C6800147BC6 /* AccountModel.swift */; };
+		F3395C50204E1E9200147BC6 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3395C4F204E1E9200147BC6 /* AccountService.swift */; };
+		F3395C52204E1F3100147BC6 /* HostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3395C51204E1F3100147BC6 /* HostService.swift */; };
+		F3395C54204E4AE000147BC6 /* RestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3395C53204E4AE000147BC6 /* RestUtils.swift */; };
 		F35BDC0F204A52EA008F1E52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35BDC0E204A52EA008F1E52 /* AppDelegate.swift */; };
-		F35BDC11204A52EA008F1E52 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35BDC10204A52EA008F1E52 /* ViewController.swift */; };
+		F35BDC11204A52EA008F1E52 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35BDC10204A52EA008F1E52 /* LoginViewController.swift */; };
 		F35BDC14204A52EA008F1E52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F35BDC12204A52EA008F1E52 /* Main.storyboard */; };
 		F35BDC16204A52EA008F1E52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F35BDC15204A52EA008F1E52 /* Assets.xcassets */; };
 		F35BDC19204A52EA008F1E52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F35BDC17204A52EA008F1E52 /* LaunchScreen.storyboard */; };
 		F35BDC24204A52EA008F1E52 /* ToptalScreeningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35BDC23204A52EA008F1E52 /* ToptalScreeningTests.swift */; };
 		F35BDC2F204A52EA008F1E52 /* ToptalScreeningUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35BDC2E204A52EA008F1E52 /* ToptalScreeningUITests.swift */; };
-		F35BDC3D204A5954008F1E52 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35BDC3C204A5954008F1E52 /* RegisterViewController.swift */; };
+		F35BDC3D204A5954008F1E52 /* NewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35BDC3C204A5954008F1E52 /* NewUserViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,9 +47,13 @@
 		F30EEA97204B26BA0088D95D /* JogTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JogTableViewController.swift; sourceTree = "<group>"; };
 		F30EEA99204B290F0088D95D /* Jog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jog.swift; sourceTree = "<group>"; };
 		F30EEA9B204B62F10088D95D /* JogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JogViewController.swift; sourceTree = "<group>"; };
+		F3395C4D204E1C6800147BC6 /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
+		F3395C4F204E1E9200147BC6 /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
+		F3395C51204E1F3100147BC6 /* HostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostService.swift; sourceTree = "<group>"; };
+		F3395C53204E4AE000147BC6 /* RestUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestUtils.swift; sourceTree = "<group>"; };
 		F35BDC0B204A52EA008F1E52 /* ToptalScreening.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToptalScreening.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F35BDC0E204A52EA008F1E52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F35BDC10204A52EA008F1E52 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F35BDC10204A52EA008F1E52 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F35BDC13204A52EA008F1E52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F35BDC15204A52EA008F1E52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F35BDC18204A52EA008F1E52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -56,7 +64,7 @@
 		F35BDC2A204A52EA008F1E52 /* ToptalScreeningUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToptalScreeningUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F35BDC2E204A52EA008F1E52 /* ToptalScreeningUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToptalScreeningUITests.swift; sourceTree = "<group>"; };
 		F35BDC30204A52EA008F1E52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F35BDC3C204A5954008F1E52 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		F35BDC3C204A5954008F1E52 /* NewUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,9 +92,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F3395C4A204E1B0900147BC6 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F3395C4F204E1E9200147BC6 /* AccountService.swift */,
+				F3395C51204E1F3100147BC6 /* HostService.swift */,
+				F3395C53204E4AE000147BC6 /* RestUtils.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F3395C4B204E1B1600147BC6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F30EEA99204B290F0088D95D /* Jog.swift */,
+				F3395C4D204E1C6800147BC6 /* AccountModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F3395C4C204E1B2500147BC6 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F35BDC10204A52EA008F1E52 /* LoginViewController.swift */,
+				F30EEA9B204B62F10088D95D /* JogViewController.swift */,
+				F30EEA95204B24820088D95D /* JogTableViewCell.swift */,
+				F30EEA97204B26BA0088D95D /* JogTableViewController.swift */,
+				F35BDC3C204A5954008F1E52 /* NewUserViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		F35BDC02204A52EA008F1E52 = {
 			isa = PBXGroup;
 			children = (
+				F3395C4C204E1B2500147BC6 /* ViewControllers */,
+				F3395C4B204E1B1600147BC6 /* Models */,
+				F3395C4A204E1B0900147BC6 /* Services */,
 				F35BDC0D204A52EA008F1E52 /* ToptalScreening */,
 				F35BDC22204A52EA008F1E52 /* ToptalScreeningTests */,
 				F35BDC2D204A52EA008F1E52 /* ToptalScreeningUITests */,
@@ -108,16 +150,10 @@
 			isa = PBXGroup;
 			children = (
 				F35BDC0E204A52EA008F1E52 /* AppDelegate.swift */,
-				F35BDC10204A52EA008F1E52 /* ViewController.swift */,
 				F35BDC12204A52EA008F1E52 /* Main.storyboard */,
-				F30EEA9B204B62F10088D95D /* JogViewController.swift */,
-				F30EEA97204B26BA0088D95D /* JogTableViewController.swift */,
-				F30EEA99204B290F0088D95D /* Jog.swift */,
-				F30EEA95204B24820088D95D /* JogTableViewCell.swift */,
 				F35BDC15204A52EA008F1E52 /* Assets.xcassets */,
 				F35BDC17204A52EA008F1E52 /* LaunchScreen.storyboard */,
 				F35BDC1A204A52EA008F1E52 /* Info.plist */,
-				F35BDC3C204A5954008F1E52 /* RegisterViewController.swift */,
 			);
 			path = ToptalScreening;
 			sourceTree = "<group>";
@@ -274,10 +310,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3395C54204E4AE000147BC6 /* RestUtils.swift in Sources */,
+				F3395C50204E1E9200147BC6 /* AccountService.swift in Sources */,
 				F30EEA96204B24820088D95D /* JogTableViewCell.swift in Sources */,
-				F35BDC3D204A5954008F1E52 /* RegisterViewController.swift in Sources */,
+				F35BDC3D204A5954008F1E52 /* NewUserViewController.swift in Sources */,
 				F30EEA98204B26BA0088D95D /* JogTableViewController.swift in Sources */,
-				F35BDC11204A52EA008F1E52 /* ViewController.swift in Sources */,
+				F3395C4E204E1C6800147BC6 /* AccountModel.swift in Sources */,
+				F3395C52204E1F3100147BC6 /* HostService.swift in Sources */,
+				F35BDC11204A52EA008F1E52 /* LoginViewController.swift in Sources */,
 				F30EEA9A204B290F0088D95D /* Jog.swift in Sources */,
 				F35BDC0F204A52EA008F1E52 /* AppDelegate.swift in Sources */,
 				F30EEA9C204B62F10088D95D /* JogViewController.swift in Sources */,

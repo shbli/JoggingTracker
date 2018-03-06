@@ -33,32 +33,17 @@ class UserViewSet(viewsets.ModelViewSet):
             return self.queryset
         # All other regular users can see their own accounts only
         user = self.request.user
-        return self.queryset.filter(id=user)
+        return self.queryset.filter(id=user.id)
 
     def get_serializer_class(self):
         # Admins get access to full user details include changing permissions
         if self.request.user.groups.filter(name='Admin').exists():
+            return serializers.UserAdminSerializer
+        # Get show everything, so the mobile app can show the appropriate views based on the user group and permission
+        if self.request.method == 'GET':
             return serializers.UserAdminSerializer
         return serializers.UserSerializer
 
     def get_permissions(self):
         self.permission_classes = (AllowAny, IsUserManagerOrAdminOrOwner)
         return super(UserViewSet, self).get_permissions()
-
-
-def jog_list(request):
-    userid = request.user.id
-
-    print('user_id')
-    print(userid)
-
-    result = []
-
-    for jog in models.Jog.objects.all():
-        result.append({'name': jog.notes, 'distance': jog.distance, 'user_id': jog.author_id})
-
-    return JsonResponse(result, safe=False)
-
-
-def change_user_group(request):
-    userid = ((request))
