@@ -8,12 +8,13 @@
 
 import UIKit
 
-class Jog {
-    var label: String
-    init? (label: String) {
-        if label.isEmpty {
-            return nil
-        }
-        self.label = label
-    }
+class Jog: Decodable {
+    var id: Int?
+    var author: Int?
+    var notes: String?
+    var activity_start_time: Date?
+    var distance: Int?
+    var time: Int?
+    var created: Date?
+    var modified: Date?
 }

@@ -9,43 +9,42 @@
 import UIKit
 
 class JogTableViewController: UITableViewController {
-
+    
     var jogs = [Jog]()
     
-    private func loadSampleJogs() {
-        guard let jog1 = Jog(label: "Label 1") else { fatalError("Unable to instantiate jog1") }
-        guard let jog2 = Jog(label: "Label 2") else { fatalError("Unable to instantiate jog2") }
-        guard let jog3 = Jog(label: "Label 3") else { fatalError("Unable to instantiate jog3") }
-        guard let jog4 = Jog(label: "Label 4") else { fatalError("Unable to instantiate jog4") }
-        
-        jogs += [jog1, jog2, jog3, jog4]
+    private func loadJogs() {
+        SharedJogTrackingService.getJogRecords(onSuccess: loadJogsOnSuccess, onError: {_ in })
+    }
+    
+    private func loadJogsOnSuccess(jogs: [Jog]) {
+        self.jogs.append(contentsOf: jogs)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadSampleJogs()
+        loadJogs()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-         self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return jogs.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Configure the cell...
         let cellIdentifier = "JogTableViewCell"
@@ -53,8 +52,8 @@ class JogTableViewController: UITableViewController {
             fatalError("The dequeued cell is not an instance of JogTableViewCell.")
         }
         let jog = jogs[indexPath.row]
-        cell.label.text = jog.label
-
+        cell.label.text = jog.notes
+        
         return cell
     }
     
@@ -63,13 +62,25 @@ class JogTableViewController: UITableViewController {
             
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 // Update an existing jog
-                jogs[selectedIndexPath.row] = jog
-                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+                SharedJogTrackingService.updateJogRecord(id: jog.id!,notes: jog.notes!, activity_start_time: jog.activity_start_time!, distance: jog.distance!, time: jog.time!, created: jog.created!, modified: Date(), onSuccess:
+                    {(jog) in DispatchQueue.main.async {
+                        //on success
+                        self.jogs[selectedIndexPath.row] = jog
+                        self.tableView.reloadRows(at: [selectedIndexPath], with: .none)
+                        }}, onError: {(error) in
+                            print(error)
+                })
             } else {
                 //add a new jog
-                let newIndexPath = IndexPath(row: jogs.count, section: 0)
-                jogs.append(jog)
-                tableView.insertRows(at: [newIndexPath], with: .automatic)
+                SharedJogTrackingService.createJogRecord(notes: jog.notes!, activity_start_time: jog.activity_start_time!, distance: jog.distance!, time: jog.time!, created: Date(), modified: Date(),
+                                                         onSuccess:
+                    {(jog) in DispatchQueue.main.async {
+                        let newIndexPath = IndexPath(row: self.jogs.count, section: 0)
+                        self.jogs.append(jog)
+                        self.tableView.insertRows(at: [newIndexPath], with: .automatic)
+                        }}, onError: {(error) in
+                            print(error)
+                })
             }
         }
     }
@@ -84,31 +95,38 @@ class JogTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            jogs.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            SharedJogTrackingService.deleteJogRecord(id: jogs[indexPath.row].id!,
+                                                     onSuccess: { DispatchQueue.main.async {
+                                                        self.jogs.remove(at: indexPath.row)
+                                                        tableView.deleteRows(at: [indexPath], with: .fade)
+                                                        }},
+                                                     onError: {(error) in
+                                                        print(error)
+            })
+            
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
-
+    
     /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
+     // Override to support rearranging the table view.
+     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+     
+     }
+     */
+    
     /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
+     // Override to support conditional rearranging of the table view.
+     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the item to be re-orderable.
+     return true
+     }
+     */
+    
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
@@ -119,7 +137,6 @@ class JogTableViewController: UITableViewController {
         case "LogOut":
             break
         case "ShowDetail":
-            
             guard let jogDetailViewController = segue.destination as? JogViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
@@ -145,3 +162,4 @@ class JogTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
 }
+

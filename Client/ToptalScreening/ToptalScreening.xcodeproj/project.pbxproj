@@ -23,6 +23,7 @@
 		F35BDC24204A52EA008F1E52 /* ToptalScreeningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35BDC23204A52EA008F1E52 /* ToptalScreeningTests.swift */; };
 		F35BDC2F204A52EA008F1E52 /* ToptalScreeningUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35BDC2E204A52EA008F1E52 /* ToptalScreeningUITests.swift */; };
 		F35BDC3D204A5954008F1E52 /* NewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35BDC3C204A5954008F1E52 /* NewUserViewController.swift */; };
+		F370F01A204F26BD00079B19 /* JogsTrackingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F370F019204F26BD00079B19 /* JogsTrackingService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		F35BDC2E204A52EA008F1E52 /* ToptalScreeningUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToptalScreeningUITests.swift; sourceTree = "<group>"; };
 		F35BDC30204A52EA008F1E52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F35BDC3C204A5954008F1E52 /* NewUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserViewController.swift; sourceTree = "<group>"; };
+		F370F019204F26BD00079B19 /* JogsTrackingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JogsTrackingService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				F3395C4F204E1E9200147BC6 /* AccountService.swift */,
 				F3395C51204E1F3100147BC6 /* HostService.swift */,
 				F3395C53204E4AE000147BC6 /* RestUtils.swift */,
+				F370F019204F26BD00079B19 /* JogsTrackingService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				F30EEA98204B26BA0088D95D /* JogTableViewController.swift in Sources */,
 				F3395C4E204E1C6800147BC6 /* AccountModel.swift in Sources */,
 				F3395C52204E1F3100147BC6 /* HostService.swift in Sources */,
+				F370F01A204F26BD00079B19 /* JogsTrackingService.swift in Sources */,
 				F35BDC11204A52EA008F1E52 /* LoginViewController.swift in Sources */,
 				F30EEA9A204B290F0088D95D /* Jog.swift in Sources */,
 				F35BDC0F204A52EA008F1E52 /* AppDelegate.swift in Sources */,

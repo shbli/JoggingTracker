@@ -8,10 +8,13 @@ from . import serializers
 
 
 class JogViewSet(viewsets.ModelViewSet):
-    serializer_class = serializers.JogSerializer
     queryset = models.Jog.objects.all()
 
     def get_queryset(self):
+        if self.request.user.groups.filter(name='Admin').exists() \
+                or self.request.user.groups.filter(name='RecordsAdmin').exists():
+            return self.queryset
+
         user = self.request.user
         return self.queryset.filter(author_id=user)
 
@@ -19,9 +22,15 @@ class JogViewSet(viewsets.ModelViewSet):
         self.permission_classes = (IsAuthenticated, IsOwnerOrRecordsAdmin)
         return super(JogViewSet, self).get_permissions()
 
+    def get_serializer_class(self):
+        # Admins get access to full user details including the author field (Can edit anyone)
+        if self.request.user.groups.filter(name='Admin').exists() \
+                or self.request.user.groups.filter(name='RecordsAdmin').exists():
+            return serializers.AdminJogSerializer
+        return serializers.JogSerializer
+
 
 class UserViewSet(viewsets.ModelViewSet):
-    serializer_class = serializers.UserSerializer
     queryset = User.objects.all()
 
     def get_queryset(self):

@@ -3,13 +3,33 @@ from rest_framework import serializers
 from . import models
 
 
-class JogSerializer(serializers.ModelSerializer):
+# The admin jog serializer shows the author id
+class AdminJogSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Jog
         fields = (
             'id', 'author', 'notes', 'activity_start_time',
             'distance', 'time',
             'created', 'modified')
+
+
+# The serializer forces the creator to only edit his own fields (Does not see the author id)
+class JogSerializer(serializers.ModelSerializer):
+    author = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
+    class Meta:
+        model = models.Jog
+        fields = (
+            'id', 'author', 'notes', 'activity_start_time',
+            'distance', 'time',
+            'created', 'modified')
+
+        # Force the author to logged in user
+        def perform_create(self, serializer):
+            serializer.save(author_id=self.request.user.id)
+
+        def perform_update(self, serializer):
+            serializer.save(author_id=self.request.user.id)
 
 
 # Serialize for regular users

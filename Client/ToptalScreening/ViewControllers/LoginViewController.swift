@@ -50,12 +50,43 @@ class LoginViewController: UIViewController {
             SharedAccountService.authUser(username: usernameTextField.text!, password: passwordTextField.text!, onSuccess: {
                 print("On success")
                 print("UserModelToken " + UserAccountModel!.token!)
-                DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "login_successful", sender: nil)
+                
+                if (UserAccountModel != nil) {
+                    
+                    let accountType: AccountType = UserAccountModel!.accountType()
+                    switch accountType {
+                    case AccountType.Admin:
+                        DispatchQueue.main.async {
+                            self.performSegue(withIdentifier: "login_successful_admin", sender: nil)
+                        }
+                        break;
+                    case AccountType.UserManager:
+                        DispatchQueue.main.async {
+                            self.performSegue(withIdentifier: "login_successful_all_users", sender: nil)
+                        }
+                        break;
+                    case AccountType.RecordsAdmin:
+                        DispatchQueue.main.async {
+                            self.performSegue(withIdentifier: "login_successful_jog_history", sender: nil)
+                        }
+                        break;
+                    case AccountType.RegularUser:
+                        DispatchQueue.main.async {
+                            self.performSegue(withIdentifier: "login_successful_jog_history", sender: nil)
+                        }
+                        break;
+                    case AccountType.None:
+                        DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Unkowen account type!", message: "", preferredStyle: UIAlertControllerStyle.alert)
+                        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+                        self.present(alert, animated: true, completion: nil)
+                        }
+                        break;
+                    }
                 }
             },
-                                          onError: {error -> Void in
-                                            print(error)
+            onError: {error -> Void in
+            print(error)
             })
         }
     }
