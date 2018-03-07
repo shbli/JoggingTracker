@@ -25,7 +25,7 @@ class JogTrackingService {
      }
      */
     
-    //create a new jog record added by the user, distance in meters, time in minutes
+    //get all jog records
     func getJogRecords(onSuccess: @escaping (_ jogs : [Jog]) -> Void, onError: @escaping (_ error: String) -> Void) {
         let url = APIBaseURL + "jogs/"
         

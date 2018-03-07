@@ -56,16 +56,19 @@ class LoginViewController: UIViewController {
                     let accountType: AccountType = UserAccountModel!.accountType()
                     switch accountType {
                     case AccountType.Admin:
+                        self.loadAllUsers()
                         DispatchQueue.main.async {
                             self.performSegue(withIdentifier: "login_successful_admin", sender: nil)
                         }
                         break;
                     case AccountType.UserManager:
+                        self.loadAllUsers()
                         DispatchQueue.main.async {
                             self.performSegue(withIdentifier: "login_successful_all_users", sender: nil)
                         }
                         break;
                     case AccountType.RecordsAdmin:
+                        self.loadAllUsers()
                         DispatchQueue.main.async {
                             self.performSegue(withIdentifier: "login_successful_jog_history", sender: nil)
                         }
@@ -77,9 +80,7 @@ class LoginViewController: UIViewController {
                         break;
                     case AccountType.None:
                         DispatchQueue.main.async {
-                        let alert = UIAlertController(title: "Unkowen account type!", message: "", preferredStyle: UIAlertControllerStyle.alert)
-                        alert.addAction(UIAlertAction(title: "Ok", style: .default))
-                        self.present(alert, animated: true, completion: nil)
+                            AlertUtility.ShowAlert(uiViewController: self, title: "Unkowen account type")
                         }
                         break;
                     }
@@ -91,17 +92,21 @@ class LoginViewController: UIViewController {
         }
     }
     
+    func loadAllUsers() {
+        SharedAccountService.getAllUsers(onSuccess: {},
+                                         onError:
+            {(error) in
+                AlertUtility.ShowAlert(uiViewController: self, title: error)
+        })
+    }
+    
     func validateFields() -> Bool {
         if (usernameTextField.text?.isEmpty)! {
-            let alert = UIAlertController(title: "Enter username!", message: "", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default))
-            self.present(alert, animated: true, completion: nil)
+            AlertUtility.ShowAlert(uiViewController: self, title: "Enter username!")
             return false;
         }
         if (passwordTextField.text?.isEmpty)! {
-            let alert = UIAlertController(title: "Enter password!", message: "", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default))
-            self.present(alert, animated: true, completion: nil)
+            AlertUtility.ShowAlert(uiViewController: self, title: "Enter password!")
             return false;
         }
         

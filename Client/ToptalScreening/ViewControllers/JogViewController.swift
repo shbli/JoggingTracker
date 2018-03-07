@@ -7,9 +7,24 @@
 //
 
 import UIKit
-import os.log
 
-class JogViewController: UIViewController {
+
+//class UserPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
+//
+//}
+
+class JogViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return AllUsersAccounts.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return AllUsersAccounts[row].username!
+    }
     
     var jog: Jog?
     
@@ -17,6 +32,9 @@ class JogViewController: UIViewController {
     @IBOutlet weak var activityTimeDatePicker: UIDatePicker!
     @IBOutlet weak var distanceTextField: UITextField!
     @IBOutlet weak var timeTextField: UITextField!
+    @IBOutlet weak var userPickerView: UIPickerView!
+    
+    
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     
@@ -34,6 +52,29 @@ class JogViewController: UIViewController {
             //hide the cancel button while editing, so we can see the "Back" button
             navigationItem.leftBarButtonItem = nil
         }
+        
+        if (UserAccountModel?.accountType() == AccountType.Admin || UserAccountModel?.accountType() == AccountType.RecordsAdmin) {
+            prepareUserPicker()
+        } else {
+            userPickerView.isHidden = true
+        }
+    }
+    
+    func prepareUserPicker() {
+        userPickerView.dataSource = self
+        userPickerView.delegate = self
+        
+        var row: Int = 0
+        if let jog = jog {
+            row = AllUsersAccounts.index(where: {(accountModel) in
+                return accountModel.id == jog.author})!
+        } else {
+            //my user will be the default user
+            row = AllUsersAccounts.index(where: {(accountModel) in
+                return accountModel.id == UserAccountModel?.id})!
+        }
+        print("Selected row " + String(row))
+        userPickerView.selectRow(row, inComponent: 0, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,7 +88,7 @@ class JogViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)        
         guard let button = sender as? UIBarButtonItem, button == saveButton else {
-            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+            print("The save button was not pressed, cancelling")
             return
         }
         
@@ -59,6 +100,9 @@ class JogViewController: UIViewController {
         jog?.activity_start_time = activityTimeDatePicker.date
         jog?.distance = Int(distanceTextField.text!)
         jog?.time = Int(timeTextField.text!)
+        if (userPickerView.isHidden == false) {
+            jog?.author = AllUsersAccounts[userPickerView.selectedRow(inComponent: 1)].id
+        }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
@@ -87,21 +131,15 @@ class JogViewController: UIViewController {
     
     func validateFields() -> Bool {
         if (notesTextField.text?.isEmpty)! {
-            let alert = UIAlertController(title: "All fields must be filled!", message: "", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default))
-            self.present(alert, animated: true, completion: nil)
+            AlertUtility.ShowAlert(uiViewController: self, title: "All fields must be filled!")
             return false;
         }
         if (distanceTextField.text?.isEmpty)! {
-            let alert = UIAlertController(title: "All fields must be filled!", message: "", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default))
-            self.present(alert, animated: true, completion: nil)
+            AlertUtility.ShowAlert(uiViewController: self, title: "All fields must be filled!")
             return false;
         }
         if (timeTextField.text?.isEmpty)! {
-            let alert = UIAlertController(title: "All fields must be filled!", message: "", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default))
-            self.present(alert, animated: true, completion: nil)
+            AlertUtility.ShowAlert(uiViewController: self, title: "All fields must be filled!")
             return false;
         }
         return true;

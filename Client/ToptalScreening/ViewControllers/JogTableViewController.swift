@@ -13,11 +13,9 @@ class JogTableViewController: UITableViewController {
     var jogs = [Jog]()
     
     private func loadJogs() {
-        SharedJogTrackingService.getJogRecords(onSuccess: loadJogsOnSuccess, onError: {_ in })
-    }
-    
-    private func loadJogsOnSuccess(jogs: [Jog]) {
-        self.jogs.append(contentsOf: jogs)
+        SharedJogTrackingService.getJogRecords(onSuccess: {(jogs) in
+            self.jogs.append(contentsOf: jogs)
+        }, onError: {(error) in print(error)})
     }
     
     override func viewDidLoad() {

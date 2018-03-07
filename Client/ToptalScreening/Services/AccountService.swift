@@ -78,4 +78,39 @@ class AccountService {
             }
         })
     }
+    
+    //get all user accounts, only can be run by an admin or a user manager, otherwise will return an empty list
+    func getAllUsers(onSuccess: @escaping () -> Void, onError: @escaping (_ error: String) -> Void) {
+        let url = APIBaseURL + "users/"
+        
+        RestUtils.getRest(url: url, token: UserAccountModel!.token!, completionHandler: {data, response, error -> Void in
+            if(error != nil) {
+                print("Error")
+                print(String(describing: error))
+                onError(String(describing: error))
+            } else {
+                print("Response body:")
+                print(String(data: data!, encoding: .utf8) ?? "Unable to convert data to string")
+                
+                guard let data = data else {
+                    print("Error: No data to decode")
+                    return
+                }
+                
+                let decoder: JSONDecoder =  JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
+                
+                //var jogs = [Jog]()
+                guard let allUsers: [AccountModel] = try? decoder.decode([AccountModel].self, from: data) else {
+                    print("Error: Couldn't decode data into [Jog]Model")
+                    return
+                }
+                
+                AllUsersAccounts.removeAll()
+                AllUsersAccounts.append(contentsOf: allUsers)
+                print("All users count is " + String(AllUsersAccounts.count))
+                onSuccess()
+            }
+        })
+    }
 }

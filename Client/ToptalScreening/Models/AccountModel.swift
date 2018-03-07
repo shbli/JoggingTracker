@@ -8,6 +8,7 @@
 
 import Foundation
 
+var AllUsersAccounts = [AccountModel]()
 var UserAccountModel: AccountModel?
 
 enum AccountType: Int {

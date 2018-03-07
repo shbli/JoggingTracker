@@ -41,58 +41,42 @@ class NewUserViewController : UIViewController {
                     self.dismiss(animated: true, completion: nil)
                 }
             }, onError: { (error) in
-                let alert = UIAlertController(title: "Error!", message: error, preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default))
-                self.present(alert, animated: true, completion: nil)
+                AlertUtility.ShowAlert(uiViewController: self, title: "Error!", message: error)
             })
         }
     }
     
     func validateFields() -> Bool {
         if (firstNameTextField.text?.isEmpty)! {
-            let alert = UIAlertController(title: "All fields must be filled!", message: "", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default))
-            self.present(alert, animated: true, completion: nil)
+            AlertUtility.ShowAlert(uiViewController: self, title: "All fields must be filled!")
             return false;
         }
         if (lastNameTextField.text?.isEmpty)! {
-            let alert = UIAlertController(title: "All fields must be filled!", message: "", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default))
-            self.present(alert, animated: true, completion: nil)
+            AlertUtility.ShowAlert(uiViewController: self, title: "All fields must be filled!")
             return false;
         }
         if (usernameTextField.text?.isEmpty)! {
-            let alert = UIAlertController(title: "All fields must be filled!", message: "", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default))
-            self.present(alert, animated: true, completion: nil)
+            AlertUtility.ShowAlert(uiViewController: self, title: "All fields must be filled!")
             return false;
         }
         if (emailTextField.text?.isEmpty)! {
-            let alert = UIAlertController(title: "All fields must be filled!", message: "", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default))
-            self.present(alert, animated: true, completion: nil)
+            AlertUtility.ShowAlert(uiViewController: self, title: "All fields must be filled!")
             return false;
         }
         if (passwordTextField.text?.isEmpty)! {
-            let alert = UIAlertController(title: "All fields must be filled!", message: "", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default))
-            self.present(alert, animated: true, completion: nil)
+            AlertUtility.ShowAlert(uiViewController: self, title: "All fields must be filled!")
             return false;
         }
 
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         if (emailTest.evaluate(with: emailTextField.text!) == false) {
-            let alert = UIAlertController(title: "E-Mail is incorrect!", message: "", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default))
-            self.present(alert, animated: true, completion: nil)
+            AlertUtility.ShowAlert(uiViewController: self, title: "Incorrect e-mail format!")
             return false;
         }
         
         if (passwordTextField.text != confirmPasswordTextField.text) {
-            let alert = UIAlertController(title: "Password do not match!", message: "", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default))
-            self.present(alert, animated: true, completion: nil)
+            AlertUtility.ShowAlert(uiViewController: self, title: "Password do not match!")
             return false;
         }
         return true;
