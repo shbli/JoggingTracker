@@ -11,10 +11,29 @@ import UIKit
 class JogTableViewController: UITableViewController {
     
     var jogs = [Jog]()
+    var filteredJogs = [Jog]()
+    
+    private func sortComparator(arg1: Jog, arg2: Jog) -> Bool {
+        return arg1.activity_start_time! > arg2.activity_start_time!
+    }
+    
+    private func filterWithDates(from: Date, to:Date) {
+        filteredJogs.removeAll()
+        for jog in jogs {
+            if (jog.activity_start_time! >= from && jog.activity_start_time! <= to) {
+                filteredJogs.append(jog)
+            }
+        }
+        self.tableView.reloadData()
+    }
     
     private func loadJogs() {
         SharedJogTrackingService.getJogRecords(onSuccess: {(jogs) in
-            self.jogs.append(contentsOf: jogs)
+            self.filteredJogs.append(contentsOf:
+                //sort the jogs by date before adding them
+                jogs.sorted(by: self.sortComparator)
+            )
+            self.jogs.append(contentsOf: self.filteredJogs)
         }, onError: {(error) in print(error)})
     }
     
@@ -40,7 +59,7 @@ class JogTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return jogs.count
+        return filteredJogs.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -49,7 +68,7 @@ class JogTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? JogTableViewCell else {
             fatalError("The dequeued cell is not an instance of JogTableViewCell.")
         }
-        let jog = jogs[indexPath.row]
+        let jog = filteredJogs[indexPath.row]
         cell.label.text = jog.notes
         
         return cell
@@ -66,8 +85,21 @@ class JogTableViewController: UITableViewController {
                 SharedJogTrackingService.updateJogRecord(id: jog.id!, author: author, notes: jog.notes!, activity_start_time: jog.activity_start_time!, distance: jog.distance!, time: jog.time!, created: jog.created!, modified: Date(), onSuccess:
                     {(jog) in DispatchQueue.main.async {
                         //on success
-                        self.jogs[selectedIndexPath.row] = jog
-                        self.tableView.reloadRows(at: [selectedIndexPath], with: .none)
+                        //remove the element and reinsert it at the proper position
+                        self.jogs.remove(at:
+                            self.jogs.index(where: {(jog) in return jog.id == self.filteredJogs[selectedIndexPath.row].id})!)
+                        self.filteredJogs.remove(at: selectedIndexPath.row)
+                        //use of inserted sort algorithim to always insert the element at the proper position
+                        var insertionIndex = self.filteredJogs.insertionIndexOf(elem: jog, isOrderedBefore: self.sortComparator)
+                        self.filteredJogs.insert(jog, at: insertionIndex)
+
+                        insertionIndex = self.jogs.insertionIndexOf(elem: jog, isOrderedBefore: self.sortComparator)
+                        self.jogs.insert(jog, at: insertionIndex)
+
+                        self.tableView.reloadData()
+                        
+                        
+//                        self.tableView.reloadRows(at: [selectedIndexPath], with: .none)
                         }}, onError: {(error) in
                             print(error)
                 })
@@ -76,9 +108,14 @@ class JogTableViewController: UITableViewController {
                 SharedJogTrackingService.createJogRecord(author: author, notes: jog.notes!, activity_start_time: jog.activity_start_time!, distance: jog.distance!, time: jog.time!, created: Date(), modified: Date(),
                                                          onSuccess:
                     {(jog) in DispatchQueue.main.async {
-                        let newIndexPath = IndexPath(row: self.jogs.count, section: 0)
-                        self.jogs.append(jog)
+                        let newIndexPath = IndexPath(row: self.filteredJogs.count, section: 0)
+                        //use of inserted sort algorithim to always insert the element at the proper position
+                        var insertionIndex = self.filteredJogs.insertionIndexOf(elem: jog, isOrderedBefore: self.sortComparator)
+                        self.filteredJogs.insert(jog, at: insertionIndex)
+                        insertionIndex = self.jogs.insertionIndexOf(elem: jog, isOrderedBefore: self.sortComparator)
+                        self.jogs.insert(jog, at: insertionIndex)
                         self.tableView.insertRows(at: [newIndexPath], with: .automatic)
+                        self.tableView.reloadData()
                         }}, onError: {(error) in
                             print(error)
                 })
@@ -96,9 +133,11 @@ class JogTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            SharedJogTrackingService.deleteJogRecord(id: jogs[indexPath.row].id!,
+            SharedJogTrackingService.deleteJogRecord(id: filteredJogs[indexPath.row].id!,
                                                      onSuccess: { DispatchQueue.main.async {
-                                                        self.jogs.remove(at: indexPath.row)
+                                                        self.jogs.remove(at:
+                                                            self.jogs.index(where: {(jog) in return jog.id == self.filteredJogs[indexPath.row].id})!)
+                                                        self.filteredJogs.remove(at: indexPath.row)
                                                         tableView.deleteRows(at: [indexPath], with: .fade)
                                                         }},
                                                      onError: {(error) in
@@ -137,6 +176,20 @@ class JogTableViewController: UITableViewController {
             break
         case "LogOut":
             break
+        case "filterByDate":
+            guard let dateFilterViewController = segue.destination as? DateFilterViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            if (filteredJogs.isEmpty == false) {
+                dateFilterViewController.from = filteredJogs[filteredJogs.count-1].activity_start_time!
+                dateFilterViewController.to = filteredJogs[0].activity_start_time!
+            } else if (jogs.isEmpty == false) {
+                dateFilterViewController.from = jogs[jogs.count-1].activity_start_time!
+                dateFilterViewController.to = jogs[0].activity_start_time!
+            }
+            dateFilterViewController.FilterDate = filterWithDates
+            break;
         case "ShowDetail":
             guard let jogDetailViewController = segue.destination as? JogViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
@@ -150,7 +203,7 @@ class JogTableViewController: UITableViewController {
                 fatalError("The selected cell is not being displayed by the table")
             }
             
-            let selectedJog = jogs[indexPath.row]
+            let selectedJog = filteredJogs[indexPath.row]
             jogDetailViewController.jog = selectedJog
             
             break

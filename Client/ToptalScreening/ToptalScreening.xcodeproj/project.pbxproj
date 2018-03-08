@@ -28,6 +28,8 @@
 		F370F01F204FAE0E00079B19 /* AlertUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F370F01E204FAE0E00079B19 /* AlertUtility.swift */; };
 		F370F021204FC2FA00079B19 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F370F020204FC2FA00079B19 /* UserTableViewCell.swift */; };
 		F370F023204FC31A00079B19 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F370F022204FC31A00079B19 /* UserViewController.swift */; };
+		F3C6490D2051C3E600AEF856 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C6490C2051C3E600AEF856 /* ArrayExtension.swift */; };
+		F3C6490F2051CB8200AEF856 /* DateFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C6490E2051CB8200AEF856 /* DateFilterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,8 @@
 		F370F01E204FAE0E00079B19 /* AlertUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertUtility.swift; sourceTree = "<group>"; };
 		F370F020204FC2FA00079B19 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		F370F022204FC31A00079B19 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		F3C6490C2051C3E600AEF856 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		F3C6490E2051CB8200AEF856 /* DateFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateFilterViewController.swift; path = ViewControllers/DateFilterViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +170,7 @@
 			children = (
 				F35BDC0E204A52EA008F1E52 /* AppDelegate.swift */,
 				F35BDC12204A52EA008F1E52 /* Main.storyboard */,
+				F3C6490E2051CB8200AEF856 /* DateFilterViewController.swift */,
 				F35BDC15204A52EA008F1E52 /* Assets.xcassets */,
 				F35BDC17204A52EA008F1E52 /* LaunchScreen.storyboard */,
 				F35BDC1A204A52EA008F1E52 /* Info.plist */,
@@ -195,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				F370F01E204FAE0E00079B19 /* AlertUtility.swift */,
+				F3C6490C2051C3E600AEF856 /* ArrayExtension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -333,7 +339,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3C6490F2051CB8200AEF856 /* DateFilterViewController.swift in Sources */,
 				F370F01C204FA7EE00079B19 /* UsersTableViewController.swift in Sources */,
+				F3C6490D2051C3E600AEF856 /* ArrayExtension.swift in Sources */,
 				F370F023204FC31A00079B19 /* UserViewController.swift in Sources */,
 				F3395C54204E4AE000147BC6 /* RestUtils.swift in Sources */,
 				F3395C50204E1E9200147BC6 /* AccountService.swift in Sources */,
