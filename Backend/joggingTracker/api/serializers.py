@@ -41,15 +41,16 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ('id', 'username', 'first_name', 'last_name', 'email', 'password')
 
     def create(self, validated_data):
-        user = super(UserSerializer, self).create(validated_data)
-        user.set_password(validated_data['password'])
+        password = validated_data.pop('password', None)
+        instance = self.Meta.model(**validated_data)
+        if password is not None:
+            instance.set_password(password)
         group = Group.objects.get(name='RegularUser')
-        user.groups.add(group)
-        user.save()
-        return user
+        instance.save()
+        instance.groups.add(group)
+        return instance
 
 
-# Serialize for admin users
 class UserAdminSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
 
@@ -58,9 +59,31 @@ class UserAdminSerializer(serializers.ModelSerializer):
         fields = ('id', 'username', 'first_name', 'last_name', 'email', 'password', 'groups')
 
     def create(self, validated_data):
-        user = super(UserAdminSerializer, self).create(validated_data)
-        user.set_password(validated_data['password'])
-        group = Group.objects.get(name='RegularUser')
-        user.groups.add(group)
-        user.save()
-        return user
+        # Here the group item have to be popped first before any validation happens
+        # if we pop the password first, we will get an exception
+        groups = validated_data.pop('groups', None)
+        instance = self.Meta.model(**validated_data)
+        password = validated_data.pop('password', None)
+        if password is not None:
+            instance.set_password(password)
+        instance.save()
+        if groups is not None:
+            instance.groups.set(groups)
+        return instance
+
+    def update(self, instance, validated_data):
+        for attr, value in validated_data.items():
+            if attr == 'password':
+                if value is not None:
+                    instance.set_password(value)
+            elif attr == 'groups':
+                instance.groups.set(value)
+            else:
+                setattr(instance, attr, value)
+        instance.save()
+        return instance
+
+
+# Special case, when updating a user, we can leave the password field blank, thus it will be ignored
+class UserAdminSerializerPut(UserAdminSerializer):
+    password = serializers.CharField(write_only=True, allow_blank=True, allow_null=True)

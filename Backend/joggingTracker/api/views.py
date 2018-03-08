@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from api.permissions import IsOwnerOrRecordsAdmin, IsUserManagerOrAdminOrOwner
-from django.contrib.auth.models import User, AnonymousUser
+from django.contrib.auth.models import User
 from . import models
 from . import serializers
 
@@ -47,6 +47,8 @@ class UserViewSet(viewsets.ModelViewSet):
     def get_serializer_class(self):
         # Admins get access to full user details include changing permissions
         if self.request.user.groups.filter(name='Admin').exists():
+            if self.request.method == 'PUT':
+                return serializers.UserAdminSerializerPut
             return serializers.UserAdminSerializer
         # Get show everything, so the mobile app can show the appropriate views based on the user group and permission
         if self.request.method == 'GET':

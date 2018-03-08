@@ -58,12 +58,12 @@ class JogTrackingService {
     }
 
     //create a new jog record added by the user, distance in meters, time in minutes
-    func createJogRecord(notes: String, activity_start_time: Date, distance: Int, time: Int, created: Date, modified: Date, onSuccess: @escaping (_ jog: Jog) -> Void, onError: @escaping (_ error: String) -> Void) {
+    func createJogRecord(author: Int, notes: String, activity_start_time: Date, distance: Int, time: Int, created: Date, modified: Date, onSuccess: @escaping (_ jog: Jog) -> Void, onError: @escaping (_ error: String) -> Void) {
         let url = APIBaseURL + "jogs/"
         
         let formatter = ISO8601DateFormatter()
         
-        let httpBodyDict: [String: Any] = ["notes": notes, "activity_start_time": formatter.string(from: activity_start_time),
+        let httpBodyDict: [String: Any] = ["author": author, "notes": notes, "activity_start_time": formatter.string(from: activity_start_time),
                                            "distance": distance, "time": time, "created": formatter.string(from: created), "modified": formatter.string(from: modified)]
         
         RestUtils.postRest(url: url, token: UserAccountModel!.token!, httpBodyDict: httpBodyDict, completionHandler: {data, response, error -> Void in
@@ -94,13 +94,13 @@ class JogTrackingService {
     }
     
     //update a new jog record added by the user, distance in meters, time in minutes
-    func updateJogRecord(id: Int, notes: String, activity_start_time: Date, distance: Int, time: Int, created: Date, modified: Date, onSuccess: @escaping (_ jog: Jog) -> Void, onError: @escaping (_ error: String) -> Void) {
+    func updateJogRecord(id: Int, author: Int, notes: String, activity_start_time: Date, distance: Int, time: Int, created: Date, modified: Date, onSuccess: @escaping (_ jog: Jog) -> Void, onError: @escaping (_ error: String) -> Void) {
         
         let url = APIBaseURL + "jogs/" + String(id) + "/"
         
         let formatter = ISO8601DateFormatter()
         
-        let httpBodyDict: [String: Any] = ["notes": notes, "activity_start_time": formatter.string(from: activity_start_time),
+        let httpBodyDict: [String: Any] = ["author": author, "notes": notes, "activity_start_time": formatter.string(from: activity_start_time),
                                            "distance": distance, "time": time, "created": formatter.string(from: created), "modified": formatter.string(from: modified)]
         
         RestUtils.putRest(url: url, token: UserAccountModel!.token!, httpBodyDict: httpBodyDict, completionHandler: {data, response, error -> Void in

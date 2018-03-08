@@ -57,10 +57,13 @@ class JogTableViewController: UITableViewController {
     
     @IBAction func unwindToJogList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? JogViewController, let jog = sourceViewController.jog {
-            
+            var author: Int = UserAccountModel!.id!
+            if let _author = jog.author {
+                author = _author
+            }
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 // Update an existing jog
-                SharedJogTrackingService.updateJogRecord(id: jog.id!,notes: jog.notes!, activity_start_time: jog.activity_start_time!, distance: jog.distance!, time: jog.time!, created: jog.created!, modified: Date(), onSuccess:
+                SharedJogTrackingService.updateJogRecord(id: jog.id!, author: author, notes: jog.notes!, activity_start_time: jog.activity_start_time!, distance: jog.distance!, time: jog.time!, created: jog.created!, modified: Date(), onSuccess:
                     {(jog) in DispatchQueue.main.async {
                         //on success
                         self.jogs[selectedIndexPath.row] = jog
@@ -70,7 +73,7 @@ class JogTableViewController: UITableViewController {
                 })
             } else {
                 //add a new jog
-                SharedJogTrackingService.createJogRecord(notes: jog.notes!, activity_start_time: jog.activity_start_time!, distance: jog.distance!, time: jog.time!, created: Date(), modified: Date(),
+                SharedJogTrackingService.createJogRecord(author: author, notes: jog.notes!, activity_start_time: jog.activity_start_time!, distance: jog.distance!, time: jog.time!, created: Date(), modified: Date(),
                                                          onSuccess:
                     {(jog) in DispatchQueue.main.async {
                         let newIndexPath = IndexPath(row: self.jogs.count, section: 0)

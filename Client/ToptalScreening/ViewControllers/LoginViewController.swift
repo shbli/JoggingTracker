@@ -93,7 +93,7 @@ class LoginViewController: UIViewController {
     }
     
     func loadAllUsers() {
-        SharedAccountService.getAllUsers(onSuccess: {},
+        SharedAccountService.adminGetAllUsers(onSuccess: {},
                                          onError:
             {(error) in
                 AlertUtility.ShowAlert(uiViewController: self, title: error)

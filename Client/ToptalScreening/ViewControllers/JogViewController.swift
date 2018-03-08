@@ -8,11 +8,6 @@
 
 import UIKit
 
-
-//class UserPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
-//
-//}
-
 class JogViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -33,6 +28,7 @@ class JogViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @IBOutlet weak var distanceTextField: UITextField!
     @IBOutlet weak var timeTextField: UITextField!
     @IBOutlet weak var userPickerView: UIPickerView!
+    @IBOutlet weak var averageSpeedLabel: UILabel!
     
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -58,6 +54,8 @@ class JogViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         } else {
             userPickerView.isHidden = true
         }
+        
+        updateAverageSpeed()
     }
     
     func prepareUserPicker() {
@@ -101,7 +99,7 @@ class JogViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         jog?.distance = Int(distanceTextField.text!)
         jog?.time = Int(timeTextField.text!)
         if (userPickerView.isHidden == false) {
-            jog?.author = AllUsersAccounts[userPickerView.selectedRow(inComponent: 1)].id
+            jog?.author = AllUsersAccounts[userPickerView.selectedRow(inComponent: 0)].id
         }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
@@ -125,6 +123,16 @@ class JogViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 //remove the last character as it is invalid
                 sender.text?.removeLast()
             }
+        }
+        
+        //update the avergae speed
+        updateAverageSpeed()
+    }
+    
+    private func updateAverageSpeed() {
+        if (distanceTextField.text?.isEmpty == false && timeTextField.text?.isEmpty == false) {
+            let averageSpeed: Int = Int(distanceTextField.text!)! / Int(timeTextField.text!)!
+            averageSpeedLabel.text = "Average speed: " + String(averageSpeed) + " meters/minutes"
         }
     }
     
