@@ -30,10 +30,8 @@ class JogTrackingService {
         let url = APIBaseURL + "jogs/"
         
         RestUtils.getRest(url: url, token: UserAccountModel!.token!, completionHandler: {data, response, error -> Void in
-            if(error != nil) {
-                print("Error")
-                print(String(describing: error))
-                onError(String(describing: error))
+            if(error != "") {
+                onError(error)
             } else {
                 print("Response body:")
                 print(String(data: data!, encoding: .utf8) ?? "Unable to convert data to string")
@@ -67,10 +65,8 @@ class JogTrackingService {
                                            "distance": distance, "time": time, "created": formatter.string(from: created), "modified": formatter.string(from: modified)]
         
         RestUtils.postRest(url: url, token: UserAccountModel!.token!, httpBodyDict: httpBodyDict, completionHandler: {data, response, error -> Void in
-            if(error != nil) {
-                print("Error")
-                print(String(describing: error))
-                onError(String(describing: error))
+            if(error != "") {
+                onError(error)
             } else {
                 print("Response body:")
                 print(String(data: data!, encoding: .utf8) ?? "Unable to convert data to string")
@@ -104,10 +100,8 @@ class JogTrackingService {
                                            "distance": distance, "time": time, "created": formatter.string(from: created), "modified": formatter.string(from: modified)]
         
         RestUtils.putRest(url: url, token: UserAccountModel!.token!, httpBodyDict: httpBodyDict, completionHandler: {data, response, error -> Void in
-            if(error != nil) {
-                print("Error")
-                print(String(describing: error))
-                onError(String(describing: error))
+            if(error != "") {
+                onError(error)
             } else {
                 print("Response body:")
                 print(String(data: data!, encoding: .utf8) ?? "Unable to convert data to string")
@@ -138,10 +132,8 @@ class JogTrackingService {
         
         
         RestUtils.deleteRest(url: url, token: UserAccountModel!.token!, completionHandler: {data, response, error -> Void in
-            if(error != nil) {
-                print("Error")
-                print(String(describing: error))
-                onError(String(describing: error))
+            if(error != "") {
+                onError(error)
             } else {
                 print("Response body:")
                 print(String(data: data!, encoding: .utf8) ?? "Unable to convert data to string")
@@ -156,10 +148,8 @@ class JogTrackingService {
         let url = APIBaseURL + "weekly-report/"
         
         RestUtils.getRest(url: url, token: UserAccountModel!.token!, completionHandler: {data, response, error -> Void in
-            if(error != nil) {
-                print("Error")
-                print(String(describing: error))
-                onError(String(describing: error))
+            if(error != "") {
+                onError(error)
             } else {
                 print("Response body:")
                 print(String(data: data!, encoding: .utf8) ?? "Unable to convert data to string")

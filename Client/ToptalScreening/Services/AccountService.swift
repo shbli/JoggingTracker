@@ -28,10 +28,8 @@ class AccountService {
         let httpBodyDict: [String: Any] = ["username": username, "password": password]
         RestUtils.postRest(url: url, httpBodyDict: httpBodyDict, completionHandler: {data, response, error -> Void in
             
-            if(error != nil) {
-                print("Error")
-                print(String(describing: error))
-                onError(String(describing: error))
+            if(error != "") {
+                onError(error)
             } else {
                 print("Response body:")
                 print(String(data: data!, encoding: .utf8) ?? "Unable to convert data to string")
@@ -64,14 +62,9 @@ class AccountService {
         let url = APIBaseURL + "users/"
         let httpBodyDict: [String: Any] = ["username": username, "password": password, "email": email, "first_name": first_name, "last_name": last_name]
         RestUtils.postRest(url: url, httpBodyDict: httpBodyDict, completionHandler: {data, response, error -> Void in
-            if(error != nil) {
-                print("Error")
-                print(String(describing: error))
-                onError(String(describing: error))
+            if(error != "") {
+                onError(error)
             } else {
-                print("Response body:")
-                print(String(data: data!, encoding: .utf8) ?? "Unable to convert data to string")
-                
                 guard let data = data else {
                     print("Error: No data to decode")
                     return
@@ -93,10 +86,8 @@ class AccountService {
         let url = APIBaseURL + "users/"
         let httpBodyDict: [String: Any] = ["username": username, "password": password, "email": email, "first_name": first_name, "last_name": last_name, "groups": groups]
         RestUtils.postRest(url: url, token: UserAccountModel!.token!, httpBodyDict: httpBodyDict, completionHandler: {data, response, error -> Void in
-            if(error != nil) {
-                print("Error")
-                print(String(describing: error))
-                onError(String(describing: error))
+            if(error != "") {
+                onError(error)
             } else {
                 print("Response body:")
                 print(String(data: data!, encoding: .utf8) ?? "Unable to convert data to string")
@@ -120,10 +111,8 @@ class AccountService {
         let url = APIBaseURL + "users/" + String(id) + "/"
         let httpBodyDict: [String: Any] = ["username": username, "password": password, "email": email, "first_name": first_name, "last_name": last_name, "groups": groups]
         RestUtils.putRest(url: url, token: UserAccountModel!.token!, httpBodyDict: httpBodyDict, completionHandler: {data, response, error -> Void in
-            if(error != nil) {
-                print("Error")
-                print(String(describing: error))
-                onError(String(describing: error))
+            if(error != "") {
+                onError(error)
             } else {
                 print("Response body:")
                 print(String(data: data!, encoding: .utf8) ?? "Unable to convert data to string")
@@ -150,10 +139,8 @@ class AccountService {
         
         
         RestUtils.deleteRest(url: url, token: UserAccountModel!.token!, completionHandler: {data, response, error -> Void in
-            if(error != nil) {
-                print("Error")
-                print(String(describing: error))
-                onError(String(describing: error))
+            if(error != "") {
+                onError(error)
             } else {
                 print("Response body:")
                 print(String(data: data!, encoding: .utf8) ?? "Unable to convert data to string")
@@ -168,10 +155,8 @@ class AccountService {
         let url = APIBaseURL + "users/"
         
         RestUtils.getRest(url: url, token: UserAccountModel!.token!, completionHandler: {data, response, error -> Void in
-            if(error != nil) {
-                print("Error")
-                print(String(describing: error))
-                onError(String(describing: error))
+            if(error != "") {
+                onError(error)
             } else {
                 print("Response body:")
                 print(String(data: data!, encoding: .utf8) ?? "Unable to convert data to string")

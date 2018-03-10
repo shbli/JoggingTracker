@@ -61,7 +61,7 @@ class UserViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         }
         
         //only admins are allowed to modify user permissions
-        if (UserAccountModel?.accountType() == AccountType.Admin) {
+        if (UserAccountModel?.accountType() == AccountType.Admin || UserAccountModel?.accountType() == AccountType.UserManager) {
             preparePermissionPicker()
         } else {
             permissionPickerView.isHidden = true

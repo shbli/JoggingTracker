@@ -1,12 +1,9 @@
 from django.db.models import IntegerField, Avg
 from django.core import serializers
 from rest_framework import viewsets
-from rest_framework.decorators import list_route, detail_route
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework_jwt.views import ObtainJSONWebToken
-
 from api.permissions import IsOwnerOrRecordsAdmin, IsUserManagerOrAdminOrOwner
 from django.contrib.auth.models import User
 from . import models
@@ -72,7 +69,8 @@ class UserViewSet(viewsets.ModelViewSet):
 
     def get_serializer_class(self):
         # Admins get access to full user details include changing permissions
-        if self.request.user.groups.filter(name='Admin').exists():
+        if self.request.user.groups.filter(name='Admin').exists() \
+                or self.request.user.groups.filter(name='UserManager').exists():
             if self.request.method == 'PUT':
                 return serializers.UserAdminSerializerPut
             return serializers.UserAdminSerializer

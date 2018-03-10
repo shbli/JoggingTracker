@@ -35,7 +35,10 @@ class JogTableViewController: UITableViewController {
             )
             self.jogs.append(contentsOf: self.filteredJogs)
             DispatchQueue.main.async { self.tableView.reloadData() }
-        }, onError: {(error) in print(error)})
+        }, onError: {(error) in
+            print(error)
+            AlertUtility.ShowAlert(uiViewController: self, title: error)
+        })
     }
     
     override func viewDidLoad() {
@@ -104,6 +107,7 @@ class JogTableViewController: UITableViewController {
 //                        self.tableView.reloadRows(at: [selectedIndexPath], with: .none)
                         }}, onError: {(error) in
                             print(error)
+                            AlertUtility.ShowAlert(uiViewController: self, title: error)
                 })
             } else {
                 //add a new jog
@@ -120,6 +124,7 @@ class JogTableViewController: UITableViewController {
                         self.tableView.reloadData()
                         }}, onError: {(error) in
                             print(error)
+                            AlertUtility.ShowAlert(uiViewController: self, title: error)
                 })
             }
         }
@@ -144,6 +149,7 @@ class JogTableViewController: UITableViewController {
                                                         }},
                                                      onError: {(error) in
                                                         print(error)
+                                                        AlertUtility.ShowAlert(uiViewController: self, title: error)
             })
             
         } else if editingStyle == .insert {

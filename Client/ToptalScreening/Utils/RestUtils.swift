@@ -10,7 +10,7 @@ import Foundation
 
 class RestUtils {
     //used for operations that does not require a token
-    static func postRest(url: String, httpBodyDict: [String: Any], completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
+    static func postRest(url: String, httpBodyDict: [String: Any], completionHandler: @escaping (Data?, URLResponse?, String) -> Void) {
         let request: NSMutableURLRequest = NSMutableURLRequest(url: NSURL(string: url)! as URL)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -30,12 +30,21 @@ class RestUtils {
         
         let session = URLSession.shared
         let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in
-            completionHandler(data, response, error)
+            var errorString: String
+            if (error != nil) {
+                errorString = error!.localizedDescription
+            } else {
+                print("Response body:")
+                let responseBody: String = String(data: data!, encoding: .utf8) ?? "Unable to convert data to string"
+                print(responseBody)
+                errorString = ErrorHandlingUtility.handleRestAPIError(responseBody: responseBody)
+            }
+            completionHandler(data, response, errorString)
         })
         task.resume()
     }
     
-    static func postRest(url: String, token: String, httpBodyDict: [String: Any], completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
+    static func postRest(url: String, token: String, httpBodyDict: [String: Any], completionHandler: @escaping (Data?, URLResponse?, String) -> Void) {
         let request: NSMutableURLRequest = NSMutableURLRequest(url: NSURL(string: url)! as URL)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -56,12 +65,21 @@ class RestUtils {
         
         let session = URLSession.shared
         let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in
-            completionHandler(data, response, error)
+            var errorString: String
+            if (error != nil) {
+                errorString = error!.localizedDescription
+            } else {
+                print("Response body:")
+                let responseBody: String = String(data: data!, encoding: .utf8) ?? "Unable to convert data to string"
+                print(responseBody)
+                errorString = ErrorHandlingUtility.handleRestAPIError(responseBody: responseBody)
+            }
+            completionHandler(data, response, errorString)
         })
         task.resume()
     }
 
-    static func putRest(url: String, token: String, httpBodyDict: [String: Any], completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
+    static func putRest(url: String, token: String, httpBodyDict: [String: Any], completionHandler: @escaping (Data?, URLResponse?, String) -> Void) {
         let request: NSMutableURLRequest = NSMutableURLRequest(url: NSURL(string: url)! as URL)
         request.httpMethod = "PUT"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -82,12 +100,21 @@ class RestUtils {
         
         let session = URLSession.shared
         let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in
-            completionHandler(data, response, error)
+            var errorString: String
+            if (error != nil) {
+                errorString = error!.localizedDescription
+            } else {
+                print("Response body:")
+                let responseBody: String = String(data: data!, encoding: .utf8) ?? "Unable to convert data to string"
+                print(responseBody)
+                errorString = ErrorHandlingUtility.handleRestAPIError(responseBody: responseBody)
+            }
+            completionHandler(data, response, errorString)
         })
         task.resume()
     }
 
-    static func getRest(url: String, token: String, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
+    static func getRest(url: String, token: String, completionHandler: @escaping (Data?, URLResponse?, String) -> Void) {
         let request: NSMutableURLRequest = NSMutableURLRequest(url: NSURL(string: url)! as URL)
         request.httpMethod = "GET"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -98,12 +125,21 @@ class RestUtils {
         
         let session = URLSession.shared
         let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in
-            completionHandler(data, response, error)
+            var errorString: String
+            if (error != nil) {
+                errorString = error!.localizedDescription
+            } else {
+                print("Response body:")
+                let responseBody: String = String(data: data!, encoding: .utf8) ?? "Unable to convert data to string"
+                print(responseBody)
+                errorString = ErrorHandlingUtility.handleRestAPIError(responseBody: responseBody)
+            }
+            completionHandler(data, response, errorString)
         })
         task.resume()
     }
 
-    static func deleteRest(url: String, token: String, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
+    static func deleteRest(url: String, token: String, completionHandler: @escaping (Data?, URLResponse?, String) -> Void) {
         let request: NSMutableURLRequest = NSMutableURLRequest(url: NSURL(string: url)! as URL)
         request.httpMethod = "DELETE"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -114,7 +150,16 @@ class RestUtils {
         
         let session = URLSession.shared
         let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in
-            completionHandler(data, response, error)
+            var errorString: String
+            if (error != nil) {
+                errorString = error!.localizedDescription
+            } else {
+                print("Response body:")
+                let responseBody: String = String(data: data!, encoding: .utf8) ?? "Unable to convert data to string"
+                print(responseBody)
+                errorString = ErrorHandlingUtility.handleRestAPIError(responseBody: responseBody)
+            }
+            completionHandler(data, response, errorString)
         })
         task.resume()
     }

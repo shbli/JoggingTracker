@@ -15,6 +15,7 @@
 		F3395C50204E1E9200147BC6 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3395C4F204E1E9200147BC6 /* AccountService.swift */; };
 		F3395C52204E1F3100147BC6 /* HostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3395C51204E1F3100147BC6 /* HostService.swift */; };
 		F3395C54204E4AE000147BC6 /* RestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3395C53204E4AE000147BC6 /* RestUtils.swift */; };
+		F3440EA720546A3B00BD6430 /* ErrorHandlingUtlitiy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3440EA620546A3B00BD6430 /* ErrorHandlingUtlitiy.swift */; };
 		F35BDC0F204A52EA008F1E52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35BDC0E204A52EA008F1E52 /* AppDelegate.swift */; };
 		F35BDC11204A52EA008F1E52 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35BDC10204A52EA008F1E52 /* LoginViewController.swift */; };
 		F35BDC14204A52EA008F1E52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F35BDC12204A52EA008F1E52 /* Main.storyboard */; };
@@ -61,6 +62,7 @@
 		F3395C4F204E1E9200147BC6 /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		F3395C51204E1F3100147BC6 /* HostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostService.swift; sourceTree = "<group>"; };
 		F3395C53204E4AE000147BC6 /* RestUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestUtils.swift; sourceTree = "<group>"; };
+		F3440EA620546A3B00BD6430 /* ErrorHandlingUtlitiy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandlingUtlitiy.swift; sourceTree = "<group>"; };
 		F35BDC0B204A52EA008F1E52 /* ToptalScreening.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToptalScreening.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F35BDC0E204A52EA008F1E52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F35BDC10204A52EA008F1E52 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -117,7 +119,6 @@
 			children = (
 				F3395C4F204E1E9200147BC6 /* AccountService.swift */,
 				F3395C51204E1F3100147BC6 /* HostService.swift */,
-				F3395C53204E4AE000147BC6 /* RestUtils.swift */,
 				F370F019204F26BD00079B19 /* JogsTrackingService.swift */,
 			);
 			path = Services;
@@ -210,6 +211,8 @@
 			children = (
 				F370F01E204FAE0E00079B19 /* AlertUtility.swift */,
 				F3C6490C2051C3E600AEF856 /* ArrayExtension.swift */,
+				F3440EA620546A3B00BD6430 /* ErrorHandlingUtlitiy.swift */,
+				F3395C53204E4AE000147BC6 /* RestUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				F3C6490F2051CB8200AEF856 /* DateFilterViewController.swift in Sources */,
 				F370F01C204FA7EE00079B19 /* UsersTableViewController.swift in Sources */,
 				F3C6490D2051C3E600AEF856 /* ArrayExtension.swift in Sources */,
+				F3440EA720546A3B00BD6430 /* ErrorHandlingUtlitiy.swift in Sources */,
 				F370F023204FC31A00079B19 /* UserViewController.swift in Sources */,
 				F3395C54204E4AE000147BC6 /* RestUtils.swift in Sources */,
 				F3395C50204E1E9200147BC6 /* AccountService.swift in Sources */,

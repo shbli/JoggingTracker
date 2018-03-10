@@ -56,19 +56,20 @@ class LoginViewController: UIViewController {
                     let accountType: AccountType = UserAccountModel!.accountType()
                     switch accountType {
                     case AccountType.Admin:
-                        self.loadAllUsers()
-                        DispatchQueue.main.async {
-                            self.performSegue(withIdentifier: "login_successful_admin", sender: nil)
-                        }
+                        self.loadAllUsers(onSuccess: {
+                            DispatchQueue.main.async {
+                                self.performSegue(withIdentifier: "login_successful_admin", sender: nil)
+                            }
+                        })
                         break;
                     case AccountType.UserManager:
-                        self.loadAllUsers()
-                        DispatchQueue.main.async {
-                            self.performSegue(withIdentifier: "login_successful_all_users", sender: nil)
-                        }
+                        self.loadAllUsers(onSuccess: {
+                            DispatchQueue.main.async {
+                                self.performSegue(withIdentifier: "login_successful_all_users", sender: nil)
+                            }
+                        })
                         break;
                     case AccountType.RecordsAdmin:
-                        self.loadAllUsers()
                         DispatchQueue.main.async {
                             self.performSegue(withIdentifier: "login_successful_jog_history", sender: nil)
                         }
@@ -79,21 +80,20 @@ class LoginViewController: UIViewController {
                         }
                         break;
                     case AccountType.None:
-                        DispatchQueue.main.async {
-                            AlertUtility.ShowAlert(uiViewController: self, title: "Unkowen account type")
-                        }
+                        AlertUtility.ShowAlert(uiViewController: self, title: "Unkowen account type")
                         break;
                     }
                 }
             },
             onError: {error -> Void in
-            print(error)
+                print(error)
+                AlertUtility.ShowAlert(uiViewController: self, title: error)
             })
         }
     }
     
-    func loadAllUsers() {
-        SharedAccountService.adminGetAllUsers(onSuccess: {},
+    func loadAllUsers(onSuccess: @escaping() -> Void) {
+        SharedAccountService.adminGetAllUsers(onSuccess: { onSuccess() },
                                          onError:
             {(error) in
                 AlertUtility.ShowAlert(uiViewController: self, title: error)

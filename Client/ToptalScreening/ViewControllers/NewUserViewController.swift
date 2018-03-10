@@ -40,8 +40,8 @@ class NewUserViewController : UIViewController {
                     self.CreateUserSuccess?(self.usernameTextField.text!, self.passwordTextField.text!)
                     self.dismiss(animated: true, completion: nil)
                 }
-            }, onError: { (error) in
-                AlertUtility.ShowAlert(uiViewController: self, title: "Error!", message: error)
+            }, onError: { (error) in                
+                AlertUtility.ShowAlert(uiViewController: self, title: error)
             })
         }
     }

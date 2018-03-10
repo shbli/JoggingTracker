@@ -29,7 +29,10 @@ class WeeklyReportTableViewController: UITableViewController {
             )
             self.jogWeeklyReport.append(contentsOf: self.filteredResults)
             DispatchQueue.main.async { self.tableView.reloadData() }
-        }, onError: {(error) in print(error)})
+        }, onError: {(error) in
+            print(error)
+            AlertUtility.ShowAlert(uiViewController: self, title: error)
+        })
     }
     
     override func viewDidLoad() {

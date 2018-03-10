@@ -49,4 +49,17 @@ class AccountModel : Decodable {
         }
         return AccountType.None;
     }
+    
+    func copy() -> AccountModel {
+        let accountModelCopy: AccountModel = AccountModel()
+        accountModelCopy.id = self.id
+        accountModelCopy.username = self.username
+        accountModelCopy.password = self.password
+        accountModelCopy.first_name = self.first_name
+        accountModelCopy.last_name = self.last_name
+        accountModelCopy.email = self.email
+        accountModelCopy.groups = self.groups
+        accountModelCopy.token = self.token
+        return accountModelCopy
+    }
 }

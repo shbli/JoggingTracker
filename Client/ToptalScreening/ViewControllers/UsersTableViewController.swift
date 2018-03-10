@@ -34,7 +34,6 @@ class UsersTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        
         return AllUsersAccounts.count
     }
 
@@ -68,6 +67,7 @@ class UsersTableViewController: UITableViewController {
                         self.tableView.reloadRows(at: [selectedIndexPath], with: .none)
                         }}, onError: {(error) in
                             print(error)
+                            AlertUtility.ShowAlert(uiViewController: self, title: error)
                 })
             } else {
                 //add a new account
@@ -79,6 +79,7 @@ class UsersTableViewController: UITableViewController {
                         self.tableView.insertRows(at: [newIndexPath], with: .automatic)
                         }}, onError: {(error) in
                             print(error)
+                            AlertUtility.ShowAlert(uiViewController: self, title: error)
                 })
             }
         }
@@ -103,6 +104,7 @@ class UsersTableViewController: UITableViewController {
                                                        
                                                        onError: {(error) in
                                                         print(error)
+                                                        AlertUtility.ShowAlert(uiViewController: self, title: error)
             })
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -153,7 +155,7 @@ class UsersTableViewController: UITableViewController {
             }
             
             let selectedUser = AllUsersAccounts[indexPath.row]
-            userDetailViewController.accountModel = selectedUser
+            userDetailViewController.accountModel = selectedUser.copy()
             
             break
         default:
