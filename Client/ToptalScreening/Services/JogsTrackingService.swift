@@ -150,5 +150,37 @@ class JogTrackingService {
             }
         })
     }
+    
+    //get weekly report for the jogs along with average time and distance for each week
+    func getJogWeeklyReport(onSuccess: @escaping (_ jogWeeklyReport : [JogWeeklyReport]) -> Void, onError: @escaping (_ error: String) -> Void) {
+        let url = APIBaseURL + "weekly-report/"
+        
+        RestUtils.getRest(url: url, token: UserAccountModel!.token!, completionHandler: {data, response, error -> Void in
+            if(error != nil) {
+                print("Error")
+                print(String(describing: error))
+                onError(String(describing: error))
+            } else {
+                print("Response body:")
+                print(String(data: data!, encoding: .utf8) ?? "Unable to convert data to string")
+                
+                guard let data = data else {
+                    print("Error: No data to decode")
+                    return
+                }
+                
+                let decoder: JSONDecoder =  JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
+                
+                guard let jogWeeklyReport: [JogWeeklyReport] = try? decoder.decode([JogWeeklyReport].self, from: data) else {
+                    print("Error: Couldn't decode data into [Jog]Model")
+                    return
+                }
+                
+                onSuccess(jogWeeklyReport)
+            }
+        })
+    }
+
 }
 

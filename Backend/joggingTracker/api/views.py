@@ -1,13 +1,35 @@
-from django.http import JsonResponse
+from django.db.models import IntegerField, Avg
+from django.core import serializers
 from rest_framework import viewsets
+from rest_framework.decorators import list_route, detail_route
 from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework_jwt.views import ObtainJSONWebToken
+
 from api.permissions import IsOwnerOrRecordsAdmin, IsUserManagerOrAdminOrOwner
 from django.contrib.auth.models import User
 from . import models
 from . import serializers
+from . import utils
+
+
+class ReportView(APIView):
+    """
+    API View that returns a JSON report on average jogging time and distance per week for user.
+    """
+    def get(self, request, *args, **kwargs):
+        db_result = models.Jog.objects. \
+            annotate(week=utils.WeekFunc('activity_start_time', output_field=IntegerField()),
+                     year=utils.YearFunc('activity_start_time', output_field=IntegerField())).values('week', 'year') \
+            .annotate(avg_distance=Avg('distance'), avg_time=(Avg('time')))
+        return Response(list(db_result))
 
 
 class JogViewSet(viewsets.ModelViewSet):
+    """
+    API ViewSet that allows to you to create(POST), get(GET), edit(PUT) or delete(DELETE) jog records
+    """
     queryset = models.Jog.objects.all()
 
     def get_queryset(self):
@@ -31,6 +53,10 @@ class JogViewSet(viewsets.ModelViewSet):
 
 
 class UserViewSet(viewsets.ModelViewSet):
+    """
+    API ViewSet that allows to you to create(POST), get(GET), edit(PUT) or delete(DELETE) users
+    """
+
     queryset = User.objects.all()
 
     def get_queryset(self):

@@ -12,18 +12,29 @@ class DateFilterViewController: UIViewController {
 
     @IBOutlet weak var fromDatePicker: UIDatePicker!
     @IBOutlet weak var toDatePicker: UIDatePicker!
+    @IBOutlet weak var saveBarButton: UIBarButtonItem!
     
     var from: Date?
     var to: Date?
-    
+
+    var minimumDate: Date?
+    var maximumDate: Date?
+
     
     var FilterDate: ((_ from: Date,_ to: Date) -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        fromDatePicker.date = from!
-        toDatePicker.date = to!
         
+        self.navigationItem.rightBarButtonItem = saveBarButton
+        
+        fromDatePicker.date = from!
+        fromDatePicker.minimumDate = minimumDate!
+        fromDatePicker.maximumDate = maximumDate!
+        toDatePicker.date = to!
+        toDatePicker.minimumDate = minimumDate!
+        toDatePicker.maximumDate = maximumDate!
+
         // Do any additional setup after loading the view.
     }
 
@@ -46,10 +57,26 @@ class DateFilterViewController: UIViewController {
         if parent == nil
         {
             print("DateFilterViewController.willMove")
-            FilterDate!(fromDatePicker.date, toDatePicker.date)
         }
     }
 
+    @IBAction func saveClicked(_ sender: Any) {
+        let gregorian = Calendar(identifier: .gregorian)
+        var components = gregorian.dateComponents([.year, .month, .day, .hour, .minute, .second], from: fromDatePicker.date)
+        components.hour = 0
+        components.minute = 0
+        components.second = 0
+        from = gregorian.date(from: components)
+        
+        components = gregorian.dateComponents([.year, .month, .day, .hour, .minute, .second], from: toDatePicker.date)
+        components.hour = 23
+        components.minute = 59
+        components.second = 59
+        to = gregorian.date(from: components)
+        
+        FilterDate!(from!, to!)
+        _ = navigationController?.popViewController(animated: true)
+    }
     /*
     // MARK: - Navigation
 

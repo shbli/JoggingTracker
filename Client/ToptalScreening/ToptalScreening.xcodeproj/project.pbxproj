@@ -28,6 +28,9 @@
 		F370F01F204FAE0E00079B19 /* AlertUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F370F01E204FAE0E00079B19 /* AlertUtility.swift */; };
 		F370F021204FC2FA00079B19 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F370F020204FC2FA00079B19 /* UserTableViewCell.swift */; };
 		F370F023204FC31A00079B19 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F370F022204FC31A00079B19 /* UserViewController.swift */; };
+		F3821DF52053AEC0008BE60E /* JogWeeklyReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3821DF42053AEC0008BE60E /* JogWeeklyReport.swift */; };
+		F3821DF72053AFCA008BE60E /* WeeklyReportTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3821DF62053AFCA008BE60E /* WeeklyReportTableViewController.swift */; };
+		F3821DF92053AFE3008BE60E /* WeeklyReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3821DF82053AFE3008BE60E /* WeeklyReportTableViewCell.swift */; };
 		F3C6490D2051C3E600AEF856 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C6490C2051C3E600AEF856 /* ArrayExtension.swift */; };
 		F3C6490F2051CB8200AEF856 /* DateFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C6490E2051CB8200AEF856 /* DateFilterViewController.swift */; };
 /* End PBXBuildFile section */
@@ -77,6 +80,9 @@
 		F370F01E204FAE0E00079B19 /* AlertUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertUtility.swift; sourceTree = "<group>"; };
 		F370F020204FC2FA00079B19 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		F370F022204FC31A00079B19 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		F3821DF42053AEC0008BE60E /* JogWeeklyReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JogWeeklyReport.swift; sourceTree = "<group>"; };
+		F3821DF62053AFCA008BE60E /* WeeklyReportTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyReportTableViewController.swift; sourceTree = "<group>"; };
+		F3821DF82053AFE3008BE60E /* WeeklyReportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyReportTableViewCell.swift; sourceTree = "<group>"; };
 		F3C6490C2051C3E600AEF856 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		F3C6490E2051CB8200AEF856 /* DateFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateFilterViewController.swift; path = ViewControllers/DateFilterViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -122,6 +128,7 @@
 			children = (
 				F30EEA99204B290F0088D95D /* Jog.swift */,
 				F3395C4D204E1C6800147BC6 /* AccountModel.swift */,
+				F3821DF42053AEC0008BE60E /* JogWeeklyReport.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -137,6 +144,8 @@
 				F370F01B204FA7EE00079B19 /* UsersTableViewController.swift */,
 				F370F020204FC2FA00079B19 /* UserTableViewCell.swift */,
 				F370F022204FC31A00079B19 /* UserViewController.swift */,
+				F3821DF62053AFCA008BE60E /* WeeklyReportTableViewController.swift */,
+				F3821DF82053AFE3008BE60E /* WeeklyReportTableViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -339,6 +348,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3821DF72053AFCA008BE60E /* WeeklyReportTableViewController.swift in Sources */,
 				F3C6490F2051CB8200AEF856 /* DateFilterViewController.swift in Sources */,
 				F370F01C204FA7EE00079B19 /* UsersTableViewController.swift in Sources */,
 				F3C6490D2051C3E600AEF856 /* ArrayExtension.swift in Sources */,
@@ -349,7 +359,9 @@
 				F370F021204FC2FA00079B19 /* UserTableViewCell.swift in Sources */,
 				F30EEA96204B24820088D95D /* JogTableViewCell.swift in Sources */,
 				F35BDC3D204A5954008F1E52 /* NewUserViewController.swift in Sources */,
+				F3821DF92053AFE3008BE60E /* WeeklyReportTableViewCell.swift in Sources */,
 				F30EEA98204B26BA0088D95D /* JogTableViewController.swift in Sources */,
+				F3821DF52053AEC0008BE60E /* JogWeeklyReport.swift in Sources */,
 				F3395C4E204E1C6800147BC6 /* AccountModel.swift in Sources */,
 				F3395C52204E1F3100147BC6 /* HostService.swift in Sources */,
 				F370F01A204F26BD00079B19 /* JogsTrackingService.swift in Sources */,

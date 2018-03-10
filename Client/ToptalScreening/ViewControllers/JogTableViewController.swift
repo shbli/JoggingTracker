@@ -34,12 +34,14 @@ class JogTableViewController: UITableViewController {
                 jogs.sorted(by: self.sortComparator)
             )
             self.jogs.append(contentsOf: self.filteredJogs)
+            DispatchQueue.main.async { self.tableView.reloadData() }
         }, onError: {(error) in print(error)})
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadJogs()
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -187,6 +189,11 @@ class JogTableViewController: UITableViewController {
             } else if (jogs.isEmpty == false) {
                 dateFilterViewController.from = jogs[jogs.count-1].activity_start_time!
                 dateFilterViewController.to = jogs[0].activity_start_time!
+            }
+            
+            if (jogs.isEmpty == false) {
+                dateFilterViewController.minimumDate = jogs[jogs.count-1].activity_start_time!
+                dateFilterViewController.maximumDate = jogs[0].activity_start_time!
             }
             dateFilterViewController.FilterDate = filterWithDates
             break;
