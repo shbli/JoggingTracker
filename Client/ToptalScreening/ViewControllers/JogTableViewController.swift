@@ -41,9 +41,17 @@ class JogTableViewController: UITableViewController {
         })
     }
     
+    private func setupBackground() {
+        // Add a background view to the table view
+        let backgroundImage = UIImage(named: "detailwallpaper.jpg")
+        let imageView = UIImageView(image: backgroundImage)
+        self.tableView.backgroundView = imageView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadJogs()
+        setupBackground()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -74,8 +82,10 @@ class JogTableViewController: UITableViewController {
             fatalError("The dequeued cell is not an instance of JogTableViewCell.")
         }
         let jog = filteredJogs[indexPath.row]
-        cell.label.text = jog.notes
-        
+        cell.notes.text = jog.notes
+        cell.distance.text = String(jog.distance!)
+        cell.time.text = String(jog.time!)
+        cell.speed.text = String(jog.distance! / jog.time!)
         return cell
     }
     

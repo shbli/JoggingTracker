@@ -17,9 +17,10 @@ class JogViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         return AllUsersAccounts.count
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return AllUsersAccounts[row].username!
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        return NSAttributedString(string: AllUsersAccounts[row].username!, attributes: [NSAttributedStringKey.foregroundColor:UIColor.white])
     }
+
     
     var jog: Jog?
     
@@ -30,13 +31,13 @@ class JogViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @IBOutlet weak var userPickerView: UIPickerView!
     @IBOutlet weak var averageSpeedLabel: UILabel!
     
-    
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "detailwallpaper.jpg")!)
+        activityTimeDatePicker.setValue(UIColor.white, forKey: "textColor")
         // Do any additional setup after loading the view.
         
         if let jog = jog {

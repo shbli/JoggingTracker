@@ -25,7 +25,10 @@ class DateFilterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "detailwallpaper.jpg")!)
+        fromDatePicker.setValue(UIColor.white, forKey: "textColor")
+        toDatePicker.setValue(UIColor.white, forKey: "textColor")
+
         self.navigationItem.rightBarButtonItem = saveBarButton
         
         fromDatePicker.date = from!

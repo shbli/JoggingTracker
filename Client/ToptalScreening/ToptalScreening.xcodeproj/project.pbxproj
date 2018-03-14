@@ -32,6 +32,16 @@
 		F3821DF52053AEC0008BE60E /* JogWeeklyReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3821DF42053AEC0008BE60E /* JogWeeklyReport.swift */; };
 		F3821DF72053AFCA008BE60E /* WeeklyReportTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3821DF62053AFCA008BE60E /* WeeklyReportTableViewController.swift */; };
 		F3821DF92053AFE3008BE60E /* WeeklyReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3821DF82053AFE3008BE60E /* WeeklyReportTableViewCell.swift */; };
+		F392FB7820584D0C00927C0E /* wallpaper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F392FB7720584D0C00927C0E /* wallpaper.jpg */; };
+		F392FB7C205867BD00927C0E /* login.png in Resources */ = {isa = PBXBuildFile; fileRef = F392FB7B205867BD00927C0E /* login.png */; };
+		F392FB7E2058688000927C0E /* jogging.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F392FB7D2058687F00927C0E /* jogging.jpg */; };
+		F392FB8020586C7B00927C0E /* icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F392FB7F20586C7B00927C0E /* icon.jpg */; };
+		F392FB82205878C000927C0E /* detailwallpaper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F392FB81205878C000927C0E /* detailwallpaper.jpg */; };
+		F392FB882058999100927C0E /* time.png in Resources */ = {isa = PBXBuildFile; fileRef = F392FB832058998E00927C0E /* time.png */; };
+		F392FB892058999100927C0E /* progresspic.png in Resources */ = {isa = PBXBuildFile; fileRef = F392FB842058998F00927C0E /* progresspic.png */; };
+		F392FB8A2058999100927C0E /* cellbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = F392FB852058998F00927C0E /* cellbackground.png */; };
+		F392FB8B2058999100927C0E /* distance.png in Resources */ = {isa = PBXBuildFile; fileRef = F392FB862058999000927C0E /* distance.png */; };
+		F392FB8C2058999100927C0E /* speed.png in Resources */ = {isa = PBXBuildFile; fileRef = F392FB872058999100927C0E /* speed.png */; };
 		F3C6490D2051C3E600AEF856 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C6490C2051C3E600AEF856 /* ArrayExtension.swift */; };
 		F3C6490F2051CB8200AEF856 /* DateFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C6490E2051CB8200AEF856 /* DateFilterViewController.swift */; };
 /* End PBXBuildFile section */
@@ -85,6 +95,16 @@
 		F3821DF42053AEC0008BE60E /* JogWeeklyReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JogWeeklyReport.swift; sourceTree = "<group>"; };
 		F3821DF62053AFCA008BE60E /* WeeklyReportTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyReportTableViewController.swift; sourceTree = "<group>"; };
 		F3821DF82053AFE3008BE60E /* WeeklyReportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyReportTableViewCell.swift; sourceTree = "<group>"; };
+		F392FB7720584D0C00927C0E /* wallpaper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wallpaper.jpg; sourceTree = "<group>"; };
+		F392FB7B205867BD00927C0E /* login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = login.png; path = ../../../../../../Desktop/login.png; sourceTree = "<group>"; };
+		F392FB7D2058687F00927C0E /* jogging.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jogging.jpg; sourceTree = "<group>"; };
+		F392FB7F20586C7B00927C0E /* icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = icon.jpg; sourceTree = "<group>"; };
+		F392FB81205878C000927C0E /* detailwallpaper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = detailwallpaper.jpg; sourceTree = "<group>"; };
+		F392FB832058998E00927C0E /* time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time.png; sourceTree = "<group>"; };
+		F392FB842058998F00927C0E /* progresspic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = progresspic.png; sourceTree = "<group>"; };
+		F392FB852058998F00927C0E /* cellbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellbackground.png; sourceTree = "<group>"; };
+		F392FB862058999000927C0E /* distance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = distance.png; sourceTree = "<group>"; };
+		F392FB872058999100927C0E /* speed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = speed.png; sourceTree = "<group>"; };
 		F3C6490C2051C3E600AEF856 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		F3C6490E2051CB8200AEF856 /* DateFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateFilterViewController.swift; path = ViewControllers/DateFilterViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -147,6 +167,7 @@
 				F370F022204FC31A00079B19 /* UserViewController.swift */,
 				F3821DF62053AFCA008BE60E /* WeeklyReportTableViewController.swift */,
 				F3821DF82053AFE3008BE60E /* WeeklyReportTableViewCell.swift */,
+				F3C6490E2051CB8200AEF856 /* DateFilterViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -154,6 +175,7 @@
 		F35BDC02204A52EA008F1E52 = {
 			isa = PBXGroup;
 			children = (
+				F392FB7620584CF300927C0E /* Images */,
 				F370F01D204FADD400079B19 /* Utils */,
 				F3395C4C204E1B2500147BC6 /* ViewControllers */,
 				F3395C4B204E1B1600147BC6 /* Models */,
@@ -180,7 +202,6 @@
 			children = (
 				F35BDC0E204A52EA008F1E52 /* AppDelegate.swift */,
 				F35BDC12204A52EA008F1E52 /* Main.storyboard */,
-				F3C6490E2051CB8200AEF856 /* DateFilterViewController.swift */,
 				F35BDC15204A52EA008F1E52 /* Assets.xcassets */,
 				F35BDC17204A52EA008F1E52 /* LaunchScreen.storyboard */,
 				F35BDC1A204A52EA008F1E52 /* Info.plist */,
@@ -215,6 +236,23 @@
 				F3395C53204E4AE000147BC6 /* RestUtils.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		F392FB7620584CF300927C0E /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				F392FB7720584D0C00927C0E /* wallpaper.jpg */,
+				F392FB7D2058687F00927C0E /* jogging.jpg */,
+				F392FB7B205867BD00927C0E /* login.png */,
+				F392FB7F20586C7B00927C0E /* icon.jpg */,
+				F392FB81205878C000927C0E /* detailwallpaper.jpg */,
+				F392FB852058998F00927C0E /* cellbackground.png */,
+				F392FB862058999000927C0E /* distance.png */,
+				F392FB842058998F00927C0E /* progresspic.png */,
+				F392FB872058999100927C0E /* speed.png */,
+				F392FB832058998E00927C0E /* time.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,9 +362,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F392FB8C2058999100927C0E /* speed.png in Resources */,
+				F392FB7820584D0C00927C0E /* wallpaper.jpg in Resources */,
+				F392FB8020586C7B00927C0E /* icon.jpg in Resources */,
+				F392FB882058999100927C0E /* time.png in Resources */,
+				F392FB7C205867BD00927C0E /* login.png in Resources */,
 				F35BDC19204A52EA008F1E52 /* LaunchScreen.storyboard in Resources */,
+				F392FB7E2058688000927C0E /* jogging.jpg in Resources */,
+				F392FB82205878C000927C0E /* detailwallpaper.jpg in Resources */,
 				F35BDC16204A52EA008F1E52 /* Assets.xcassets in Resources */,
+				F392FB8A2058999100927C0E /* cellbackground.png in Resources */,
 				F35BDC14204A52EA008F1E52 /* Main.storyboard in Resources */,
+				F392FB8B2058999100927C0E /* distance.png in Resources */,
+				F392FB892058999100927C0E /* progresspic.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

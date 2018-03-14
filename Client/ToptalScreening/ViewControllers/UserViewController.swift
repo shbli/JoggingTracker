@@ -17,19 +17,21 @@ class UserViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         return 4
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        var attribute: String
         switch row {
         case 0:
-            return "Admin"
+            attribute = "Admin"
         case 1:
-            return "UserManager"
+            attribute = "UserManager"
         case 2:
-            return "RegularUser"
+            attribute = "RegularUser"
         case 3:
-            return "RecordsAdmin"
+            attribute = "RecordsAdmin"
         default:
-            return "None"
+            attribute = "None"
         }
+        return NSAttributedString(string: attribute, attributes: [NSAttributedStringKey.foregroundColor:UIColor.white])
     }
 
     var accountModel: AccountModel?
@@ -47,6 +49,8 @@ class UserViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "detailwallpaper.jpg")!)
+        permissionPickerView.setValue(UIColor.white, forKey: "textColor")
 
         // Do any additional setup after loading the view.
         if let accountModel = accountModel {

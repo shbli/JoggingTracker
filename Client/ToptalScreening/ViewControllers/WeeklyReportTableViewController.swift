@@ -35,9 +35,17 @@ class WeeklyReportTableViewController: UITableViewController {
         })
     }
     
+    private func setupBackground() {
+        // Add a background view to the table view
+        let backgroundImage = UIImage(named: "detailwallpaper.jpg")
+        let imageView = UIImageView(image: backgroundImage)
+        self.tableView.backgroundView = imageView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadJogWeeklyReport()
+        setupBackground()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -70,7 +78,10 @@ class WeeklyReportTableViewController: UITableViewController {
             fatalError("The dequeued cell is not an instance of WeeklyReportTableViewCell.")
         }
         let jogWeekReport = filteredResults[indexPath.row]
-        cell.label.text = String(jogWeekReport.year!) + " week " + String(jogWeekReport.week!) + " average time is " + String(jogWeekReport.avg_time!) + " minutes and average distance is " + String(jogWeekReport.avg_distance!) + " meters."
+        cell.weekAndYear.text = "Average of " + String(jogWeekReport.year!) + " week " + String(jogWeekReport.week!)
+        cell.distance.text = String(jogWeekReport.avg_distance!)
+        cell.time.text = String(jogWeekReport.avg_time!)
+        cell.speed.text = String(jogWeekReport.avg_distance! / jogWeekReport.avg_time!)
         
         return cell
     }

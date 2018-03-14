@@ -9,10 +9,17 @@
 import UIKit
 
 class UsersTableViewController: UITableViewController {
-
+    
+    private func setupBackground() {
+        // Add a background view to the table view
+        let backgroundImage = UIImage(named: "detailwallpaper.jpg")
+        let imageView = UIImageView(image: backgroundImage)
+        self.tableView.backgroundView = imageView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupBackground()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

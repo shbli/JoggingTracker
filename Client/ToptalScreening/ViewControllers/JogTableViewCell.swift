@@ -10,11 +10,15 @@ import UIKit
 
 class JogTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var label: UILabel!
-    
+    @IBOutlet weak var notes: UILabel!
+    @IBOutlet weak var distance: UILabel!
+    @IBOutlet weak var time: UILabel!
+    @IBOutlet weak var speed: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.backgroundColor = UIColor.clear
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
