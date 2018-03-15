@@ -27,14 +27,18 @@ class ReportView(APIView):
         print(db_backend)
         week_func = ExtractWeek
         year_func = ExtractYear
+
         if db_backend == 'mysql':
             week_func = utils.WeekFunc
             year_func = utils.YearFunc
 
         db_result = models.Jog.objects. \
             annotate(week=week_func('activity_start_time', output_field=IntegerField()),
-                     year=year_func('activity_start_time', output_field=IntegerField())).values('week', 'year') \
+                     year=year_func('activity_start_time', output_field=IntegerField()),
+                     ).values('week', 'year', 'author_id') \
+            .filter(author_id=self.request.user.id)\
             .annotate(avg_distance=Avg('distance', output_field=FloatField()), avg_time=(Avg('time', output_field=FloatField())))
+
         return Response(list(db_result))
 
 
