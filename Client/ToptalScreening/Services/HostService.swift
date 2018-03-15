@@ -10,5 +10,6 @@
 import Foundation
 
 let localHost = "http://localhost:8000/api/"
+let herokuHost = "https://jog-tracking-demo.herokuapp.com/api/"
 
-let APIBaseURL = localHost
+let APIBaseURL = herokuHost

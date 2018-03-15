@@ -33,7 +33,6 @@
 		F3821DF72053AFCA008BE60E /* WeeklyReportTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3821DF62053AFCA008BE60E /* WeeklyReportTableViewController.swift */; };
 		F3821DF92053AFE3008BE60E /* WeeklyReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3821DF82053AFE3008BE60E /* WeeklyReportTableViewCell.swift */; };
 		F392FB7820584D0C00927C0E /* wallpaper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F392FB7720584D0C00927C0E /* wallpaper.jpg */; };
-		F392FB7C205867BD00927C0E /* login.png in Resources */ = {isa = PBXBuildFile; fileRef = F392FB7B205867BD00927C0E /* login.png */; };
 		F392FB7E2058688000927C0E /* jogging.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F392FB7D2058687F00927C0E /* jogging.jpg */; };
 		F392FB8020586C7B00927C0E /* icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F392FB7F20586C7B00927C0E /* icon.jpg */; };
 		F392FB82205878C000927C0E /* detailwallpaper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F392FB81205878C000927C0E /* detailwallpaper.jpg */; };
@@ -42,6 +41,7 @@
 		F392FB8A2058999100927C0E /* cellbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = F392FB852058998F00927C0E /* cellbackground.png */; };
 		F392FB8B2058999100927C0E /* distance.png in Resources */ = {isa = PBXBuildFile; fileRef = F392FB862058999000927C0E /* distance.png */; };
 		F392FB8C2058999100927C0E /* speed.png in Resources */ = {isa = PBXBuildFile; fileRef = F392FB872058999100927C0E /* speed.png */; };
+		F39A292B20598B2400A81D80 /* login.png in Resources */ = {isa = PBXBuildFile; fileRef = F39A292A20598B2400A81D80 /* login.png */; };
 		F3C6490D2051C3E600AEF856 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C6490C2051C3E600AEF856 /* ArrayExtension.swift */; };
 		F3C6490F2051CB8200AEF856 /* DateFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C6490E2051CB8200AEF856 /* DateFilterViewController.swift */; };
 /* End PBXBuildFile section */
@@ -96,7 +96,6 @@
 		F3821DF62053AFCA008BE60E /* WeeklyReportTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyReportTableViewController.swift; sourceTree = "<group>"; };
 		F3821DF82053AFE3008BE60E /* WeeklyReportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyReportTableViewCell.swift; sourceTree = "<group>"; };
 		F392FB7720584D0C00927C0E /* wallpaper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wallpaper.jpg; sourceTree = "<group>"; };
-		F392FB7B205867BD00927C0E /* login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = login.png; path = ../../../../../../Desktop/login.png; sourceTree = "<group>"; };
 		F392FB7D2058687F00927C0E /* jogging.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jogging.jpg; sourceTree = "<group>"; };
 		F392FB7F20586C7B00927C0E /* icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = icon.jpg; sourceTree = "<group>"; };
 		F392FB81205878C000927C0E /* detailwallpaper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = detailwallpaper.jpg; sourceTree = "<group>"; };
@@ -105,6 +104,7 @@
 		F392FB852058998F00927C0E /* cellbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellbackground.png; sourceTree = "<group>"; };
 		F392FB862058999000927C0E /* distance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = distance.png; sourceTree = "<group>"; };
 		F392FB872058999100927C0E /* speed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = speed.png; sourceTree = "<group>"; };
+		F39A292A20598B2400A81D80 /* login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login.png; sourceTree = "<group>"; };
 		F3C6490C2051C3E600AEF856 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		F3C6490E2051CB8200AEF856 /* DateFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateFilterViewController.swift; path = ViewControllers/DateFilterViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -243,8 +243,8 @@
 			children = (
 				F392FB7720584D0C00927C0E /* wallpaper.jpg */,
 				F392FB7D2058687F00927C0E /* jogging.jpg */,
-				F392FB7B205867BD00927C0E /* login.png */,
 				F392FB7F20586C7B00927C0E /* icon.jpg */,
+				F39A292A20598B2400A81D80 /* login.png */,
 				F392FB81205878C000927C0E /* detailwallpaper.jpg */,
 				F392FB852058998F00927C0E /* cellbackground.png */,
 				F392FB862058999000927C0E /* distance.png */,
@@ -366,13 +366,13 @@
 				F392FB7820584D0C00927C0E /* wallpaper.jpg in Resources */,
 				F392FB8020586C7B00927C0E /* icon.jpg in Resources */,
 				F392FB882058999100927C0E /* time.png in Resources */,
-				F392FB7C205867BD00927C0E /* login.png in Resources */,
 				F35BDC19204A52EA008F1E52 /* LaunchScreen.storyboard in Resources */,
 				F392FB7E2058688000927C0E /* jogging.jpg in Resources */,
 				F392FB82205878C000927C0E /* detailwallpaper.jpg in Resources */,
 				F35BDC16204A52EA008F1E52 /* Assets.xcassets in Resources */,
 				F392FB8A2058999100927C0E /* cellbackground.png in Resources */,
 				F35BDC14204A52EA008F1E52 /* Main.storyboard in Resources */,
+				F39A292B20598B2400A81D80 /* login.png in Resources */,
 				F392FB8B2058999100927C0E /* distance.png in Resources */,
 				F392FB892058999100927C0E /* progresspic.png in Resources */,
 			);

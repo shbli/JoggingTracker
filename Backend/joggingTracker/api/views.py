@@ -1,5 +1,7 @@
-from django.db.models import IntegerField, Avg
+import os
+from django.db.models import IntegerField, Avg, FloatField
 from django.core import serializers
+from django.db.models.functions import ExtractWeek, ExtractYear
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
@@ -9,6 +11,7 @@ from django.contrib.auth.models import User
 from . import models
 from . import serializers
 from . import utils
+from joggingTracker import settings, heroku
 
 
 class ReportView(APIView):
@@ -16,10 +19,22 @@ class ReportView(APIView):
     API View that returns a JSON report on average jogging time and distance per week for user.
     """
     def get(self, request, *args, **kwargs):
+        print(os.environ['DJANGO_SETTINGS_MODULE'])
+        class_name = os.environ['DJANGO_SETTINGS_MODULE'].split('.', 1)[1]
+        setting_instance = globals()[class_name]
+        print(class_name)
+        db_backend = setting_instance.DATABASES['default']['ENGINE'].split('.')[-1]
+        print(db_backend)
+        week_func = ExtractWeek
+        year_func = ExtractYear
+        if db_backend == 'mysql':
+            week_func = utils.WeekFunc
+            year_func = utils.YearFunc
+
         db_result = models.Jog.objects. \
-            annotate(week=utils.WeekFunc('activity_start_time', output_field=IntegerField()),
-                     year=utils.YearFunc('activity_start_time', output_field=IntegerField())).values('week', 'year') \
-            .annotate(avg_distance=Avg('distance'), avg_time=(Avg('time')))
+            annotate(week=week_func('activity_start_time', output_field=IntegerField()),
+                     year=year_func('activity_start_time', output_field=IntegerField())).values('week', 'year') \
+            .annotate(avg_distance=Avg('distance', output_field=FloatField()), avg_time=(Avg('time', output_field=FloatField())))
         return Response(list(db_result))
 
 

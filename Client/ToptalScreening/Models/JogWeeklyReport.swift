@@ -22,6 +22,6 @@ import Foundation
 class JogWeeklyReport: Decodable {
     var week: Int?
     var year: Int?
-    var avg_distance: Int?
-    var avg_time: Int?
+    var avg_distance: Double?
+    var avg_time: Double?
 }

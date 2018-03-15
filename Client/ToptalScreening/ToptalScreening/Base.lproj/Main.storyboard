@@ -1078,7 +1078,7 @@
         <image name="cellbackground.png" width="1095" height="288"/>
         <image name="distance.png" width="980" height="982"/>
         <image name="jogging.jpg" width="1125" height="2436"/>
-        <image name="login.png" width="202" height="202"/>
+        <image name="login.png" width="512" height="512"/>
         <image name="progresspic.png" width="333" height="121"/>
         <image name="speed.png" width="980" height="686"/>
         <image name="time.png" width="980" height="980"/>
