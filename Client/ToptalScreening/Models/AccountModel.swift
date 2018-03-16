@@ -50,6 +50,15 @@ class AccountModel : Decodable {
         return AccountType.None;
     }
     
+    static func validateEmail(email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        if (emailTest.evaluate(with: email) == false) {
+            return false
+        }
+        return true
+    }
+    
     func copy() -> AccountModel {
         let accountModelCopy: AccountModel = AccountModel()
         accountModelCopy.id = self.id

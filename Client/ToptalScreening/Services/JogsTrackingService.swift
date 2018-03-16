@@ -33,9 +33,6 @@ class JogTrackingService {
             if(error != "") {
                 onError(error)
             } else {
-                print("Response body:")
-                print(String(data: data!, encoding: .utf8) ?? "Unable to convert data to string")
-                
                 guard let data = data else {
                     print("Error: No data to decode")
                     return
@@ -135,9 +132,6 @@ class JogTrackingService {
             if(error != "") {
                 onError(error)
             } else {
-                print("Response body:")
-                print(String(data: data!, encoding: .utf8) ?? "Unable to convert data to string")
-                
                 onSuccess()
             }
         })

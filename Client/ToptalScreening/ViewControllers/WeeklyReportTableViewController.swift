@@ -12,20 +12,12 @@ class WeeklyReportTableViewController: UITableViewController {
     
     var jogWeeklyReport = [JogWeeklyReport]()
     var filteredResults = [JogWeeklyReport]()
-
-    private func sortComparator(arg1: JogWeeklyReport, arg2: JogWeeklyReport) -> Bool {
-        if (arg1.year! == arg1.year!) {
-            //compare the weeks
-            return arg1.week! > arg2.week!
-        }
-        return arg1.year! > arg2.year!
-    }
     
     private func loadJogWeeklyReport() {
         SharedJogTrackingService.getJogWeeklyReport(onSuccess: {(jogWeeklyReport) in
             self.filteredResults.append(contentsOf:
                 //sort the jogs by date before adding them
-                jogWeeklyReport.sorted(by: self.sortComparator)
+                jogWeeklyReport.sorted(by: JogWeeklyReport.sortComparator)
             )
             self.jogWeeklyReport.append(contentsOf: self.filteredResults)
             DispatchQueue.main.async { self.tableView.reloadData() }

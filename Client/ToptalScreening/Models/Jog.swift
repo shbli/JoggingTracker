@@ -17,4 +17,9 @@ class Jog: Decodable {
     var time: Int?
     var created: Date?
     var modified: Date?
+    
+    //newest appear first
+    static func sortComparator(arg1: Jog, arg2: Jog) -> Bool {
+        return arg1.activity_start_time! > arg2.activity_start_time!
+    }
 }

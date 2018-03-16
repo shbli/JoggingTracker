@@ -24,4 +24,12 @@ class JogWeeklyReport: Decodable {
     var year: Int?
     var avg_distance: Double?
     var avg_time: Double?
+    
+    static func sortComparator(arg1: JogWeeklyReport, arg2: JogWeeklyReport) -> Bool {
+        if (arg1.year! == arg1.year!) {
+            //compare the weeks
+            return arg1.week! > arg2.week!
+        }
+        return arg1.year! > arg2.year!
+    }
 }

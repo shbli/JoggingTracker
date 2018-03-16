@@ -7,6 +7,7 @@
 //
 
 extension Array {
+    //insert at the proper position, making sure the array stays in order
     func insertionIndexOf(elem: Element, isOrderedBefore: (Element, Element) -> Bool) -> Int {
         var lo = 0
         var hi = self.count - 1

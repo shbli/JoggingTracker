@@ -172,13 +172,11 @@ class UserViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             }
         }
 
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        if (emailTest.evaluate(with: emailTextField.text!) == false) {
+        if (AccountModel.validateEmail(email: emailTextField.text!) == false) {
             AlertUtility.ShowAlert(uiViewController: self, title: "Incorrect e-mail format!")
             return false;
         }
-        
+
         if (passwordTextField.text != confirmPasswordTextField.text) {
             AlertUtility.ShowAlert(uiViewController: self, title: "Password do not match!")
             return false;

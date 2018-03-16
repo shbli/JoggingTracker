@@ -13,10 +13,6 @@ class JogTableViewController: UITableViewController {
     var jogs = [Jog]()
     var filteredJogs = [Jog]()
     
-    private func sortComparator(arg1: Jog, arg2: Jog) -> Bool {
-        return arg1.activity_start_time! > arg2.activity_start_time!
-    }
-    
     private func filterWithDates(from: Date, to:Date) {
         filteredJogs.removeAll()
         for jog in jogs {
@@ -31,7 +27,7 @@ class JogTableViewController: UITableViewController {
         SharedJogTrackingService.getJogRecords(onSuccess: {(jogs) in
             self.filteredJogs.append(contentsOf:
                 //sort the jogs by date before adding them
-                jogs.sorted(by: self.sortComparator)
+                jogs.sorted(by: Jog.sortComparator)
             )
             self.jogs.append(contentsOf: self.filteredJogs)
             DispatchQueue.main.async { self.tableView.reloadData() }
@@ -105,10 +101,10 @@ class JogTableViewController: UITableViewController {
                             self.jogs.index(where: {(jog) in return jog.id == self.filteredJogs[selectedIndexPath.row].id})!)
                         self.filteredJogs.remove(at: selectedIndexPath.row)
                         //use of inserted sort algorithim to always insert the element at the proper position
-                        var insertionIndex = self.filteredJogs.insertionIndexOf(elem: jog, isOrderedBefore: self.sortComparator)
+                        var insertionIndex = self.filteredJogs.insertionIndexOf(elem: jog, isOrderedBefore: Jog.sortComparator)
                         self.filteredJogs.insert(jog, at: insertionIndex)
 
-                        insertionIndex = self.jogs.insertionIndexOf(elem: jog, isOrderedBefore: self.sortComparator)
+                        insertionIndex = self.jogs.insertionIndexOf(elem: jog, isOrderedBefore: Jog.sortComparator)
                         self.jogs.insert(jog, at: insertionIndex)
 
                         self.tableView.reloadData()
@@ -126,9 +122,9 @@ class JogTableViewController: UITableViewController {
                     {(jog) in DispatchQueue.main.async {
                         let newIndexPath = IndexPath(row: self.filteredJogs.count, section: 0)
                         //use of inserted sort algorithim to always insert the element at the proper position
-                        var insertionIndex = self.filteredJogs.insertionIndexOf(elem: jog, isOrderedBefore: self.sortComparator)
+                        var insertionIndex = self.filteredJogs.insertionIndexOf(elem: jog, isOrderedBefore: Jog.sortComparator)
                         self.filteredJogs.insert(jog, at: insertionIndex)
-                        insertionIndex = self.jogs.insertionIndexOf(elem: jog, isOrderedBefore: self.sortComparator)
+                        insertionIndex = self.jogs.insertionIndexOf(elem: jog, isOrderedBefore: Jog.sortComparator)
                         self.jogs.insert(jog, at: insertionIndex)
                         self.tableView.insertRows(at: [newIndexPath], with: .automatic)
                         self.tableView.reloadData()

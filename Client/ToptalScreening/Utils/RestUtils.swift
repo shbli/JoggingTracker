@@ -146,7 +146,7 @@ class RestUtils {
         request.addValue("JWT " + token, forHTTPHeaderField: "Authorization")
         
         print("URL " + url)
-        print("Request is get:")
+        print("Request is delete:")
         
         let session = URLSession.shared
         let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in
