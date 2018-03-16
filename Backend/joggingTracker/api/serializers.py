@@ -75,7 +75,8 @@ class UserAdminSerializer(serializers.ModelSerializer):
         for attr, value in validated_data.items():
             if attr == 'password':
                 if value is not None:
-                    instance.set_password(value)
+                    if value is not '':
+                        instance.set_password(value)
             elif attr == 'groups':
                 instance.groups.set(value)
             else:

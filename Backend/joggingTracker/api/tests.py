@@ -90,6 +90,22 @@ class TestAPIs(TestCase):
         self.assertEqual(User.objects.get(id=user_id).email, 'newuniqueemail@some.com')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
+    def test_update_empty_password_user(self):
+        user_id = User.objects.get(username='user7').id
+        user_password = User.objects.get(username='user7').password
+        self.assertEqual(User.objects.get(id=user_id).password, user_password)
+        factory = APIRequestFactory()
+        view = UserViewSet.as_view(actions={'put': 'update'})
+        request = factory.put(reverse('user-detail', kwargs={'pk': user_id}), data={'username': 'new_user', 'password': '', 'email': 'newuniqueemail@some.com', 'first_name': 'user', 'last_name': 'last'})
+
+        # Test the request with the admin
+        force_authenticate(request, user=self.get_admin())
+        response = view(request, pk=user_id)
+
+        self.assertEqual(User.objects.get(id=user_id).email, 'newuniqueemail@some.com')
+        self.assertEqual(User.objects.get(id=user_id).password, user_password)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
     def test_delete_user(self):
         username = 'user6'
         # Let's make sure the user exist on the database first
