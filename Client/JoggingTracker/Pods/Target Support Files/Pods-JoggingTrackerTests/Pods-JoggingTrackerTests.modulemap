@@ -1,0 +1,6 @@
+framework module Pods_JoggingTrackerTests {
+  umbrella header "Pods-JoggingTrackerTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
